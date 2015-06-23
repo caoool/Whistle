@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContentViewController" customModule="Arrived" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="g7F-C0-12v" id="8Th-6x-672"/>
+                <outlet property="mapView" destination="WNn-AX-xtt" id="TPZ-Mr-xBq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="456" height="204"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7F-C0-12v">
+                    <rect key="frame" x="206" y="92" width="45" height="20"/>
+                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                    <color key="textColor" red="0.20392156859999999" green="0.23529411759999999" blue="0.30588235289999999" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WNn-AX-xtt">
+                    <rect key="frame" x="0.0" y="0.0" width="456" height="204"/>
+                </mapView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="g7F-C0-12v" firstAttribute="centerY" secondItem="WNn-AX-xtt" secondAttribute="centerY" id="0Qq-8G-3Lp"/>
+                <constraint firstAttribute="trailing" secondItem="WNn-AX-xtt" secondAttribute="trailing" id="FfX-MG-fbc"/>
+                <constraint firstAttribute="centerX" secondItem="WNn-AX-xtt" secondAttribute="centerX" id="Hzk-L0-KAL"/>
+                <constraint firstItem="g7F-C0-12v" firstAttribute="bottom" secondItem="WNn-AX-xtt" secondAttribute="bottom" constant="-25" id="O1a-e9-yir"/>
+                <constraint firstItem="g7F-C0-12v" firstAttribute="centerX" secondItem="WNn-AX-xtt" secondAttribute="centerX" id="Qo9-uh-KjE"/>
+                <constraint firstItem="WNn-AX-xtt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YXH-jd-8Ej"/>
+                <constraint firstItem="g7F-C0-12v" firstAttribute="centerX" secondItem="WNn-AX-xtt" secondAttribute="centerX" id="iII-9m-mAu"/>
+                <constraint firstItem="WNn-AX-xtt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kNe-a5-kkt"/>
+                <constraint firstAttribute="bottom" secondItem="WNn-AX-xtt" secondAttribute="bottom" id="kOh-bR-VvA"/>
+                <constraint firstItem="g7F-C0-12v" firstAttribute="bottom" secondItem="WNn-AX-xtt" secondAttribute="bottom" constant="15" id="sej-sX-PTO"/>
+                <constraint firstAttribute="centerY" secondItem="WNn-AX-xtt" secondAttribute="centerY" id="shc-aO-eG3"/>
+                <constraint firstItem="g7F-C0-12v" firstAttribute="width" secondItem="WNn-AX-xtt" secondAttribute="width" id="wef-Do-7eZ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="O1a-e9-yir"/>
+                    <exclude reference="Qo9-uh-KjE"/>
+                    <exclude reference="sej-sX-PTO"/>
+                    <exclude reference="wef-Do-7eZ"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="227" y="156"/>
+        </view>
+    </objects>
+</document>
