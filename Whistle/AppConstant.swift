@@ -46,7 +46,16 @@ struct Constants {
         static let Assists : String = "assists"
     }
     
+    struct Color {
+        static let Test : UIColor = UIColor.brownColor()
+        static let TextLight : UIColor = UIColor.whiteColor()
+        static let TextDark : UIColor = UIColor.darkTextColor()
+        static let TextDark2 : UIColor = UIColor.darkGrayColor()
+    }
     
-    
+    struct Radius {
+        static let CornerBig : CGFloat = 12
+        static let BorderWidthMid : CGFloat = 3
+    }
     
 }

@@ -11,7 +11,15 @@
 // #import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #import "UICountingLabel.h"
-//#import "LNBRippleEffect.h"
+
+//model
+#import "YALTabBarItem.h"
+
+//controller
+#import "YALFoldingTabBarController.h"
+
+//helpers
+#import "YALAnimatingTabBarConstants.h"
 
 
 #endif
