@@ -183,6 +183,11 @@
 		942FA4F81B2F1B0E0050C3E3 /* image5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 942FA4F21B2F1B0E0050C3E3 /* image5.jpg */; };
 		942FA4F91B2F1B0E0050C3E3 /* image6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 942FA4F31B2F1B0E0050C3E3 /* image6.jpg */; };
 		942FA5031B301DEA0050C3E3 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942FA5021B301DEA0050C3E3 /* Test.swift */; };
+		946FD5461B3F258E00472E91 /* MultiplePulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 946FD5431B3F258E00472E91 /* MultiplePulsingHaloLayer.m */; };
+		946FD5471B3F258E00472E91 /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 946FD5451B3F258E00472E91 /* PulsingHaloLayer.m */; };
+		946FD54C1B3F25A200472E91 /* ProfileFavorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946FD5491B3F25A200472E91 /* ProfileFavorCell.swift */; };
+		946FD54D1B3F25A200472E91 /* ProfileFavorsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946FD54A1B3F25A200472E91 /* ProfileFavorsTable.swift */; };
+		946FD54E1B3F25A200472E91 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946FD54B1B3F25A200472E91 /* ProfileView.swift */; };
 		948E8FA91B3BCDFB002556D0 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948E8FA81B3BCDFB002556D0 /* FBSDKShareKit.framework */; };
 		948E8FAF1B3C3A4C002556D0 /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 948E8FAB1B3C3A4C002556D0 /* Info-iOS.plist */; };
 		948E8FB01B3C3A4C002556D0 /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 948E8FAC1B3C3A4C002556D0 /* Info-OSX.plist */; };
@@ -210,7 +215,6 @@
 		94DED7D81B3EF1E7002B9F3B /* FavorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7D21B3EF1E7002B9F3B /* FavorView.swift */; };
 		94DED7D91B3EF1E7002B9F3B /* NewFavorLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7D31B3EF1E7002B9F3B /* NewFavorLocationView.swift */; };
 		94DED7DA1B3EF1E7002B9F3B /* NewFavorTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7D41B3EF1E7002B9F3B /* NewFavorTable.swift */; };
-		94DED7DB1B3EF1E7002B9F3B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7D61B3EF1E7002B9F3B /* ProfileView.swift */; };
 		94DED7E31B3EF296002B9F3B /* pausebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 94DED7DD1B3EF296002B9F3B /* pausebutton.png */; };
 		94DED7E41B3EF296002B9F3B /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 94DED7DE1B3EF296002B9F3B /* playbutton.png */; };
 		94DED7E51B3EF296002B9F3B /* SCWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7E01B3EF296002B9F3B /* SCWaveformView.m */; };
@@ -492,6 +496,13 @@
 		942FA4F21B2F1B0E0050C3E3 /* image5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image5.jpg; sourceTree = "<group>"; };
 		942FA4F31B2F1B0E0050C3E3 /* image6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image6.jpg; sourceTree = "<group>"; };
 		942FA5021B301DEA0050C3E3 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		946FD5421B3F258E00472E91 /* MultiplePulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplePulsingHaloLayer.h; sourceTree = "<group>"; };
+		946FD5431B3F258E00472E91 /* MultiplePulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplePulsingHaloLayer.m; sourceTree = "<group>"; };
+		946FD5441B3F258E00472E91 /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
+		946FD5451B3F258E00472E91 /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
+		946FD5491B3F25A200472E91 /* ProfileFavorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFavorCell.swift; sourceTree = "<group>"; };
+		946FD54A1B3F25A200472E91 /* ProfileFavorsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFavorsTable.swift; sourceTree = "<group>"; };
+		946FD54B1B3F25A200472E91 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		948E8FA81B3BCDFB002556D0 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		948E8FAB1B3C3A4C002556D0 /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		948E8FAC1B3C3A4C002556D0 /* Info-OSX.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-OSX.plist"; sourceTree = "<group>"; };
@@ -523,7 +534,6 @@
 		94DED7D21B3EF1E7002B9F3B /* FavorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorView.swift; sourceTree = "<group>"; };
 		94DED7D31B3EF1E7002B9F3B /* NewFavorLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFavorLocationView.swift; sourceTree = "<group>"; };
 		94DED7D41B3EF1E7002B9F3B /* NewFavorTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFavorTable.swift; sourceTree = "<group>"; };
-		94DED7D61B3EF1E7002B9F3B /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		94DED7DD1B3EF296002B9F3B /* pausebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pausebutton.png; sourceTree = "<group>"; };
 		94DED7DE1B3EF296002B9F3B /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
 		94DED7DF1B3EF296002B9F3B /* SCWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWaveformView.h; sourceTree = "<group>"; };
@@ -582,8 +592,8 @@
 				94A4B7111B3B17710083488A /* LoginView.swift */,
 				94A4B70D1B3B16B10083488A /* PhoneLoginView.swift */,
 				94A4B7131B3BBE1D0083488A /* SetProfileView.swift */,
+				946FD5481B3F25A200472E91 /* Profile */,
 				94DED7D01B3EF1E7002B9F3B /* Favor */,
-				94DED7D51B3EF1E7002B9F3B /* Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -958,6 +968,7 @@
 		942FA33E1B2F10E90050C3E3 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				946FD5411B3F258E00472E91 /* PulsingHalo */,
 				94DED7DC1B3EF296002B9F3B /* SYWaveformPlayer */,
 				94DED7BA1B3EF144002B9F3B /* ImagePickerSheetController */,
 				948E8FBA1B3DDCE9002556D0 /* VMGearLoadingView */,
@@ -1429,6 +1440,27 @@
 			path = UIFloatLabelTextField;
 			sourceTree = "<group>";
 		};
+		946FD5411B3F258E00472E91 /* PulsingHalo */ = {
+			isa = PBXGroup;
+			children = (
+				946FD5421B3F258E00472E91 /* MultiplePulsingHaloLayer.h */,
+				946FD5431B3F258E00472E91 /* MultiplePulsingHaloLayer.m */,
+				946FD5441B3F258E00472E91 /* PulsingHaloLayer.h */,
+				946FD5451B3F258E00472E91 /* PulsingHaloLayer.m */,
+			);
+			path = PulsingHalo;
+			sourceTree = "<group>";
+		};
+		946FD5481B3F25A200472E91 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				946FD5491B3F25A200472E91 /* ProfileFavorCell.swift */,
+				946FD54A1B3F25A200472E91 /* ProfileFavorsTable.swift */,
+				946FD54B1B3F25A200472E91 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		948E8FAA1B3C3A4C002556D0 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -1485,14 +1517,6 @@
 				94DED7D41B3EF1E7002B9F3B /* NewFavorTable.swift */,
 			);
 			path = Favor;
-			sourceTree = "<group>";
-		};
-		94DED7D51B3EF1E7002B9F3B /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				94DED7D61B3EF1E7002B9F3B /* ProfileView.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		94DED7DC1B3EF296002B9F3B /* SYWaveformPlayer */ = {
@@ -1651,7 +1675,6 @@
 				942FA4621B2F10E90050C3E3 /* UIAlertView+AFNetworking.m in Sources */,
 				942FA4AC1B2F10E90050C3E3 /* SiriWaveformView.swift in Sources */,
 				94DED7CB1B3EF144002B9F3B /* ImagePreviewFlowLayout.swift in Sources */,
-				94DED7DB1B3EF1E7002B9F3B /* ProfileView.swift in Sources */,
 				942FA45F1B2F10E90050C3E3 /* AFURLSessionManager.m in Sources */,
 				942FA4A61B2F10E90050C3E3 /* RNGridMenu.m in Sources */,
 				942FA4C91B2F10E90050C3E3 /* UIFloatLabelTextField.swift in Sources */,
@@ -1763,13 +1786,16 @@
 				89594C241B3ACCFE00A8CF8B /* YALTabBarItem.m in Sources */,
 				942FA4731B2F10E90050C3E3 /* UIDevice+JSQMessages.m in Sources */,
 				942FA4721B2F10E90050C3E3 /* UIColor+JSQMessages.m in Sources */,
+				946FD54D1B3F25A200472E91 /* ProfileFavorsTable.swift in Sources */,
 				942FA4201B2F10E90050C3E3 /* AudioPlayer.swift in Sources */,
 				942FA49C1B2F10E90050C3E3 /* LocationManager.swift in Sources */,
 				942FA4AD1B2F10E90050C3E3 /* FormBaseCell.swift in Sources */,
+				946FD54C1B3F25A200472E91 /* ProfileFavorCell.swift in Sources */,
 				94DED7CA1B3EF144002B9F3B /* ImagePickerSheetController.swift in Sources */,
 				94A4B7121B3B17710083488A /* LoginView.swift in Sources */,
 				942FA4A21B2F10E90050C3E3 /* AlertController.swift in Sources */,
 				89594C251B3ACCFE00A8CF8B /* YALFoldingTabBar.m in Sources */,
+				946FD54E1B3F25A200472E91 /* ProfileView.swift in Sources */,
 				942FA4951B2F10E90050C3E3 /* JSQMessagesToolbarContentView.m in Sources */,
 				89594C221B3ACCFE00A8CF8B /* YALAnimatingTabBarConstants.m in Sources */,
 				942FA41F1B2F10E90050C3E3 /* AudioManager.swift in Sources */,
@@ -1779,6 +1805,7 @@
 				942FA4A01B2F10E90050C3E3 /* ProgressHUD.m in Sources */,
 				942FA4661B2F10E90050C3E3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				942FA4631B2F10E90050C3E3 /* UIButton+AFNetworking.m in Sources */,
+				946FD5461B3F258E00472E91 /* MultiplePulsingHaloLayer.m in Sources */,
 				942FA41E1B2F10E90050C3E3 /* AudioContext.swift in Sources */,
 				942FA4B71B2F10E90050C3E3 /* FormStepperCell.swift in Sources */,
 				942FA4C51B2F10E90050C3E3 /* TableMapViewController.swift in Sources */,
@@ -1786,6 +1813,7 @@
 				942FA4821B2F10E90050C3E3 /* JSQMediaItem.m in Sources */,
 				942FA48F1B2F10E90050C3E3 /* JSQMessagesComposerTextView.m in Sources */,
 				942FA4581B2F10E90050C3E3 /* AFHTTPRequestOperationManager.m in Sources */,
+				946FD5471B3F258E00472E91 /* PulsingHaloLayer.m in Sources */,
 				942FA4251B2F10E90050C3E3 /* Image.swift in Sources */,
 				942FA47D1B2F10E90050C3E3 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				942FA4B91B2F10E90050C3E3 /* FormTextFieldCell.swift in Sources */,

@@ -22,10 +22,19 @@ class ProfileView: UIViewController {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var favorsLabel: UILabel!
     
+    private var halo: PulsingHaloLayer = PulsingHaloLayer()
+    private var isAvailable: Bool = true {
+        didSet {
+            halo.backgroundColor = isAvailable ? Constants.Color.IsAvailableHaloColor.CGColor : Constants.Color.NotAvailableHaloColor.CGColor
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         colorConfig()
+        
+        addGestures()
         
     }
 
@@ -51,13 +60,23 @@ class ProfileView: UIViewController {
     func shapeConfig() {
         infoView.roundCorners(UIRectCorner.TopLeft | UIRectCorner.TopRight, radius: Constants.Radius.CornerBig)
         portraitView.image = portraitView.image?.rounded
+        portraitView.layer.borderColor = UIColor.whiteColor().CGColor
+        portraitView.layer.borderWidth = 1
+        portraitView.layer.cornerRadius = portraitView.layer.frame.height/2
+        portraitView.layer.masksToBounds = true
         
-        var borderView: UIView = UIView(frame: CGRectMake(0, 0, portraitView.layer.frame.width, portraitView.layer.frame.height))
-        borderView.center = portraitView.center
-        borderView.layer.borderColor = UIColor.blueColor().CGColor
-        borderView.layer.borderWidth = 5
-        borderView.layer.cornerRadius = borderView.layer.frame.height/2
-        infoView.addSubview(borderView)
+        halo.position = portraitView.center
+        halo.radius = 300
+        infoView.layer.addSublayer(halo)
+    }
+    
+    func addGestures() {
+        var tapGesture = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        portraitView.addGestureRecognizer(tapGesture)
+    }
+    
+    func handleTapGesture(sender: UITapGestureRecognizer){
+        isAvailable = !isAvailable
     }
     
 }

@@ -14,6 +14,8 @@
 #import "LLARingSpinnerView.h"
 #import "VMGearLoadingView.h"
 #import "SYWaveformPlayerView.h"
+#import "PulsingHaloLayer.h"
+#import "MultiplePulsingHaloLayer.h"
 
 //model
 #import "YALTabBarItem.h"

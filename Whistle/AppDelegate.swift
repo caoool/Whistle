@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
-        setupTabBar()
+       // setupTabBar()
 //        if application.respondsToSelector("registerUserNotificationSettings:") {
 //            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
 //            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
