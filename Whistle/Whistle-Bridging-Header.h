@@ -15,4 +15,13 @@
 #import "VMGearLoadingView.h"
 #import "SYWaveformPlayerView.h"
 
+//model
+#import "YALTabBarItem.h"
+
+//controller
+#import "YALFoldingTabBarController.h"
+
+//helpers
+#import "YALAnimatingTabBarConstants.h"
+
 #endif
