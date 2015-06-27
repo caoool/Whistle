@@ -21,23 +21,25 @@ class ProfileFavorsTable: UITableViewController {
     
     func generateTestData() {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "dd-MMM-yy"
-        var favor = Favor(time: formatter.dateFromString("12-Jun-15"), portrait: UIImage(named: "Jaychou_fantasy"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: true)
+        formatter.dateFormat = "dd/MM"
+        var favor = Favor(time: formatter.dateFromString("12/06"), portrait: UIImage(named: "default_user_photo"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: true)
         favors.append(favor)
-        favor = Favor(time: formatter.dateFromString("12-Jun-15"), portrait: UIImage(named: "Jaychou_fantasy"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: false)
-        favors.append(favor)
-        favors.append(favor)
-        favor = Favor(time: formatter.dateFromString("10-Jun-15"), portrait: UIImage(named: "Jaychou_fantasy"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: false)
+        favor = Favor(time: formatter.dateFromString("12/06"), portrait: UIImage(named: "default_user_photo"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: false)
         favors.append(favor)
         favors.append(favor)
+        favor = Favor(time: formatter.dateFromString("10/06"), portrait: UIImage(named: "default_user_photo"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: true)
         favors.append(favor)
         favors.append(favor)
-        favor = Favor(time: formatter.dateFromString("01-Mar-15"), portrait: UIImage(named: "Jaychou_fantasy"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: false)
+        favors.append(favor)
+        favors.append(favor)
+        favor = Favor(time: formatter.dateFromString("01/06"), portrait: UIImage(named: "default_user_photo"), detail: "Bla bla bla bla bla bla ... bla bla bla bla bla bla bla .... bla", isMyFavor: false)
         
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        generateTestData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -68,7 +70,24 @@ class ProfileFavorsTable: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProfileFavorCell", forIndexPath: indexPath) as! ProfileFavorCell
 
-        // Configure the cell...
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "dd/MM"
+        cell.dateLabel.text = formatter.stringFromDate(favors[indexPath.row].time!)
+        if indexPath.row > 0 {
+            if cell.dateLabel.text == formatter.stringFromDate(favors[indexPath.row-1].time!) {
+                cell.dateLabel.hidden = true
+            }
+        }
+        if favors[indexPath.row].isMyFavor! {
+            cell.portrait1.hidden = true
+            cell.addConstraint(cell.leftMoreCons)
+            cell.portrait2.image = favors[indexPath.row].portrait
+        } else {
+            cell.portrait2.hidden = true
+            cell.addConstraint(cell.rightMoreCons)
+            cell.portrait1.image = favors[indexPath.row].portrait
+        }
+        cell.detailLabel.text = favors[indexPath.row].detail!
 
         return cell
     }

@@ -14,6 +14,10 @@
 		89594C231B3ACCFE00A8CF8B /* YALFoldingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C131B3ACCFE00A8CF8B /* YALFoldingTabBarController.m */; };
 		89594C241B3ACCFE00A8CF8B /* YALTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C171B3ACCFE00A8CF8B /* YALTabBarItem.m */; };
 		89594C251B3ACCFE00A8CF8B /* YALFoldingTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C1E1B3ACCFE00A8CF8B /* YALFoldingTabBar.m */; };
+		898B1A0B1B3F2F0600DD852F /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A071B3F2F0600DD852F /* InitialView.swift */; };
+		898B1A0C1B3F2F0600DD852F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A081B3F2F0600DD852F /* LoginView.swift */; };
+		898B1A0D1B3F2F0600DD852F /* PhoneLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A091B3F2F0600DD852F /* PhoneLoginView.swift */; };
+		898B1A0E1B3F2F0600DD852F /* SetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A0A1B3F2F0600DD852F /* SetProfileView.swift */; };
 		942FA2CB1B2F0FED0050C3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942FA2CA1B2F0FED0050C3E3 /* AppDelegate.swift */; };
 		942FA2D21B2F0FED0050C3E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942FA2D11B2F0FED0050C3E3 /* Images.xcassets */; };
 		942FA2D51B2F0FED0050C3E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942FA2D31B2F0FED0050C3E3 /* LaunchScreen.xib */; };
@@ -197,10 +201,6 @@
 		948E8FBD1B3DDCE9002556D0 /* VMGearLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 948E8FBC1B3DDCE9002556D0 /* VMGearLoadingView.m */; };
 		94A4B7091B3B163B0083488A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A4B7071B3B163B0083488A /* FBSDKCoreKit.framework */; };
 		94A4B70A1B3B163B0083488A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A4B7081B3B163B0083488A /* FBSDKLoginKit.framework */; };
-		94A4B70E1B3B16B10083488A /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B70B1B3B16B10083488A /* InitialView.swift */; };
-		94A4B7101B3B16B10083488A /* PhoneLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B70D1B3B16B10083488A /* PhoneLoginView.swift */; };
-		94A4B7121B3B17710083488A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B7111B3B17710083488A /* LoginView.swift */; };
-		94A4B7141B3BBE1D0083488A /* SetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B7131B3BBE1D0083488A /* SetProfileView.swift */; };
 		94DED7C61B3EF144002B9F3B /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7BB1B3EF144002B9F3B /* AnimationController.swift */; };
 		94DED7C71B3EF144002B9F3B /* ImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7BC1B3EF144002B9F3B /* ImageAction.swift */; };
 		94DED7C81B3EF144002B9F3B /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DED7BD1B3EF144002B9F3B /* ImageCollectionViewCell.swift */; };
@@ -248,6 +248,10 @@
 		89594C1A1B3ACCFE00A8CF8B /* YALTabBarInteracting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALTabBarInteracting.h; sourceTree = "<group>"; };
 		89594C1D1B3ACCFE00A8CF8B /* YALFoldingTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALFoldingTabBar.h; sourceTree = "<group>"; };
 		89594C1E1B3ACCFE00A8CF8B /* YALFoldingTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALFoldingTabBar.m; sourceTree = "<group>"; };
+		898B1A071B3F2F0600DD852F /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		898B1A081B3F2F0600DD852F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		898B1A091B3F2F0600DD852F /* PhoneLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLoginView.swift; sourceTree = "<group>"; };
+		898B1A0A1B3F2F0600DD852F /* SetProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetProfileView.swift; sourceTree = "<group>"; };
 		942FA2C51B2F0FED0050C3E3 /* Whistle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whistle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		942FA2C91B2F0FED0050C3E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		942FA2CA1B2F0FED0050C3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -515,10 +519,6 @@
 		948E8FBC1B3DDCE9002556D0 /* VMGearLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMGearLoadingView.m; sourceTree = "<group>"; };
 		94A4B7071B3B163B0083488A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		94A4B7081B3B163B0083488A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		94A4B70B1B3B16B10083488A /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
-		94A4B70D1B3B16B10083488A /* PhoneLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLoginView.swift; sourceTree = "<group>"; };
-		94A4B7111B3B17710083488A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		94A4B7131B3BBE1D0083488A /* SetProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetProfileView.swift; sourceTree = "<group>"; };
 		94DED7BB1B3EF144002B9F3B /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 		94DED7BC1B3EF144002B9F3B /* ImageAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAction.swift; sourceTree = "<group>"; };
 		94DED7BD1B3EF144002B9F3B /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -588,10 +588,7 @@
 		8951A4E31B39CDE80048D593 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				94A4B70B1B3B16B10083488A /* InitialView.swift */,
-				94A4B7111B3B17710083488A /* LoginView.swift */,
-				94A4B70D1B3B16B10083488A /* PhoneLoginView.swift */,
-				94A4B7131B3BBE1D0083488A /* SetProfileView.swift */,
+				898B1A061B3F2F0600DD852F /* Login */,
 				946FD5481B3F25A200472E91 /* Profile */,
 				94DED7D01B3EF1E7002B9F3B /* Favor */,
 			);
@@ -746,6 +743,17 @@
 				89594C1E1B3ACCFE00A8CF8B /* YALFoldingTabBar.m */,
 			);
 			path = FoldingTabBar;
+			sourceTree = "<group>";
+		};
+		898B1A061B3F2F0600DD852F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				898B1A071B3F2F0600DD852F /* InitialView.swift */,
+				898B1A081B3F2F0600DD852F /* LoginView.swift */,
+				898B1A091B3F2F0600DD852F /* PhoneLoginView.swift */,
+				898B1A0A1B3F2F0600DD852F /* SetProfileView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		942FA2BC1B2F0FED0050C3E3 = {
@@ -1454,9 +1462,9 @@
 		946FD5481B3F25A200472E91 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				946FD5491B3F25A200472E91 /* ProfileFavorCell.swift */,
-				946FD54A1B3F25A200472E91 /* ProfileFavorsTable.swift */,
 				946FD54B1B3F25A200472E91 /* ProfileView.swift */,
+				946FD54A1B3F25A200472E91 /* ProfileFavorsTable.swift */,
+				946FD5491B3F25A200472E91 /* ProfileFavorCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1679,14 +1687,13 @@
 				942FA4A61B2F10E90050C3E3 /* RNGridMenu.m in Sources */,
 				942FA4C91B2F10E90050C3E3 /* UIFloatLabelTextField.swift in Sources */,
 				942FA45B1B2F10E90050C3E3 /* AFSecurityPolicy.m in Sources */,
-				94A4B7141B3BBE1D0083488A /* SetProfileView.swift in Sources */,
 				942FA4B51B2F10E90050C3E3 /* FormSelectorCell.swift in Sources */,
-				94A4B7101B3B16B10083488A /* PhoneLoginView.swift in Sources */,
 				942FA4861B2F10E90050C3E3 /* JSQPhotoMediaItem.m in Sources */,
 				94DED7C91B3EF144002B9F3B /* ImagePickerCollectionView.swift in Sources */,
 				942FA4921B2F10E90050C3E3 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				94DED7DA1B3EF1E7002B9F3B /* NewFavorTable.swift in Sources */,
 				94DED7C61B3EF144002B9F3B /* AnimationController.swift in Sources */,
+				898B1A0E1B3F2F0600DD852F /* SetProfileView.swift in Sources */,
 				942FA47C1B2F10E90050C3E3 /* JSQMessagesTimestampFormatter.m in Sources */,
 				942FA4A71B2F10E90050C3E3 /* RRAddTagView.swift in Sources */,
 				942FA4B31B2F10E90050C3E3 /* FormPickerCell.swift in Sources */,
@@ -1706,6 +1713,7 @@
 				942FA47F1B2F10E90050C3E3 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				942FA4AE1B2F10E90050C3E3 /* FormTitleCell.swift in Sources */,
 				942FA4851B2F10E90050C3E3 /* JSQMessagesBubbleImage.m in Sources */,
+				898B1A0B1B3F2F0600DD852F /* InitialView.swift in Sources */,
 				942FA4BA1B2F10E90050C3E3 /* FormTextViewCell.swift in Sources */,
 				942FA4591B2F10E90050C3E3 /* AFHTTPSessionManager.m in Sources */,
 				942FA4A81B2F10E90050C3E3 /* RRTagCollectionViewCell.swift in Sources */,
@@ -1741,6 +1749,7 @@
 				942FA45A1B2F10E90050C3E3 /* AFNetworkReachabilityManager.m in Sources */,
 				89594C211B3ACCFE00A8CF8B /* CATransaction+TransactionWithAnimationsAndCompletion.m in Sources */,
 				942FA4BD1B2F10E90050C3E3 /* FormViewController.swift in Sources */,
+				898B1A0D1B3F2F0600DD852F /* PhoneLoginView.swift in Sources */,
 				942FA4C71B2F10E90050C3E3 /* VenuesTableView.swift in Sources */,
 				942FA4A31B2F10E90050C3E3 /* SimpleAlert.swift in Sources */,
 				89594C1F1B3ACCFE00A8CF8B /* YALSpringAnimation.m in Sources */,
@@ -1757,10 +1766,10 @@
 				948E8FB31B3D21BC002556D0 /* HttpService.swift in Sources */,
 				948E8FBD1B3DDCE9002556D0 /* VMGearLoadingView.m in Sources */,
 				942FA4C41B2F10E90050C3E3 /* MapViewController.swift in Sources */,
-				94A4B70E1B3B16B10083488A /* InitialView.swift in Sources */,
 				942FA4741B2F10E90050C3E3 /* UIImage+JSQMessages.m in Sources */,
 				942FA4761B2F10E90050C3E3 /* JSQMessagesKeyboardController.m in Sources */,
 				942FA46C1B2F10E90050C3E3 /* IDMZoomingScrollView.m in Sources */,
+				898B1A0C1B3F2F0600DD852F /* LoginView.swift in Sources */,
 				942FA48D1B2F10E90050C3E3 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				942FA4791B2F10E90050C3E3 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				942FA4941B2F10E90050C3E3 /* JSQMessagesMediaPlaceholderView.m in Sources */,
@@ -1792,7 +1801,6 @@
 				942FA4AD1B2F10E90050C3E3 /* FormBaseCell.swift in Sources */,
 				946FD54C1B3F25A200472E91 /* ProfileFavorCell.swift in Sources */,
 				94DED7CA1B3EF144002B9F3B /* ImagePickerSheetController.swift in Sources */,
-				94A4B7121B3B17710083488A /* LoginView.swift in Sources */,
 				942FA4A21B2F10E90050C3E3 /* AlertController.swift in Sources */,
 				89594C251B3ACCFE00A8CF8B /* YALFoldingTabBar.m in Sources */,
 				946FD54E1B3F25A200472E91 /* ProfileView.swift in Sources */,

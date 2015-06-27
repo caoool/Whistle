@@ -10,6 +10,14 @@ import UIKit
 
 class ProfileFavorCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var portrait1: UIImageView!
+    @IBOutlet weak var portrait2: UIImageView!
+    @IBOutlet weak var detailLabel: UILabel!
+    
+    @IBOutlet weak var leftMoreCons: NSLayoutConstraint!
+    @IBOutlet weak var rightMoreCons: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
