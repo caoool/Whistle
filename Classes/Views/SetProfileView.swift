@@ -18,18 +18,22 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
     
     var user: PFUser?
     var rowCount : Int = 2
+    
     private var imagePicker = UIImagePickerController()
     private var image : UIImage?
     private var name : String?
+    private var email : String?
     private var needEdit : Bool = false
+    
     let permissions = ["public_profile", "user_friends", "email", "user_photos"]
     
     required init(coder decoder: NSCoder) {
+        user = PFUser.currentUser()
         super.init(coder: decoder)
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()  
         self.imagePicker.delegate = self
         self.textField.delegate = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "logout", style: .Plain, target: self, action: "logOut:")
@@ -39,7 +43,6 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
         self.profileImage.userInteractionEnabled = true
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         tableView.backgroundColor = UIColor.whiteColor()
-        user = PFUser.currentUser()
         let query = PFUser.query()
         if PFFacebookUtils.isLinkedWithUser(user!) {
             VMGearLoadingView.showGearLoadingForView(self.view)
@@ -51,7 +54,6 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
             getTwitterUserData()
         } else {
             self.rowCount = 5
-            println(rowCount)
             println("phone user")
         }
     }
@@ -77,6 +79,40 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
         self.profileImage.layer.masksToBounds = true
     }
     
+    @IBAction func done(sender: UIBarButtonItem) {
+        if let user = self.user {
+            var image : NSData
+            if self.profileImage.image != nil {
+                image = NSData(data: UIImagePNGRepresentation(self.profileImage.image!))
+            } else {
+                image = NSData(data: UIImagePNGRepresentation(UIImage(named: "default_user_photo")))
+            }
+            var fileImage = PFFile(name: "portrait.jpg", data: image)
+            fileImage.saveInBackgroundWithBlock { (success : Bool, error : NSError?) -> Void in
+                if success {
+                    println("Image success")
+                } else {
+                    println("error" )
+                }
+            }
+            
+            user[Constants.User.Nickname] = textField.text
+            user[Constants.User.Portrait] = fileImage
+            user[Constants.User.Email] = self.email
+            user[Constants.User.Likes] = 0
+            user[Constants.User.Dislikes] = 0
+            user[Constants.User.Favors] = 0
+            user[Constants.User.Assists] = 0
+            user.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if error == nil {
+                    println("success")
+                }
+            })
+            user.pinInBackground()
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
     func getTwitterUserData(){
         var url : NSURL = NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")!
         var request : NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -103,8 +139,9 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, picture.type(large)"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
-                    println(result)
+                    //println(result)
                     let temp = result as! NSDictionary
+                    self.email = temp.objectForKey("email") as? String
                     let url = temp.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as! String
                     ImageLoader.sharedLoader.imageForUrl(url, completionHandler:{(image: UIImage?, url: String) in
                         self.image = image
@@ -168,7 +205,6 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
     }
     
     //MARK: - Image Picker Delegates
-    
     //What to do when the picker returns with a photo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
@@ -180,6 +216,7 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
         self.needEdit = true
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     //What to do if the image picker cancels.
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)

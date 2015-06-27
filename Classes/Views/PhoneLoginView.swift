@@ -88,7 +88,6 @@ class PhoneLoginView: UIViewController {
                     return doLogin(phoneNumber, code: code)
                 }
             }
-            
             showAlert("Code Entry", message: "You must enter the 4 digit code texted to your phone number.")
         }
     }

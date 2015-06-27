@@ -13,15 +13,6 @@
 #import "UICountingLabel.h"
 #import "LLARingSpinnerView.h"
 #import "VMGearLoadingView.h"
-
-//model
-#import "YALTabBarItem.h"
-
-//controller
-#import "YALFoldingTabBarController.h"
-
-//helpers
-#import "YALAnimatingTabBarConstants.h"
-
+#import "SYWaveformPlayerView.h"
 
 #endif

@@ -34,6 +34,7 @@ struct Constants {
     
     struct User {
         static let Name : String = "User"
+        static let Email : String = "email"
         static let ObjectId : String = "objectId"
         static let Nickname : String = "name"
         static let Portrait : String = "portrait"
@@ -51,6 +52,8 @@ struct Constants {
         static let TextLight : UIColor = UIColor.whiteColor()
         static let TextDark : UIColor = UIColor.darkTextColor()
         static let TextDark2 : UIColor = UIColor.darkGrayColor()
+        static let AudioViewColor: UIColor = UIColor.blackColor()
+        static let AudioViewProgressColor: UIColor = UIColor.grayColor()
     }
     
     struct Radius {
