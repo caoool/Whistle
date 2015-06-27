@@ -34,7 +34,6 @@
 		942FA43F1B2F10E90050C3E3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942FA31C1B2F10E90050C3E3 /* FacebookSDK.framework */; };
 		942FA4401B2F10E90050C3E3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942FA31D1B2F10E90050C3E3 /* Parse.framework */; };
 		942FA4411B2F10E90050C3E3 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942FA31E1B2F10E90050C3E3 /* ParseCrashReporting.framework */; };
-		942FA4421B2F10E90050C3E3 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942FA31F1B2F10E90050C3E3 /* ParseFacebookUtils.framework */; };
 		942FA4431B2F10E90050C3E3 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942FA3201B2F10E90050C3E3 /* ParseFacebookUtilsV4.framework */; };
 		942FA4441B2F10E90050C3E3 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942FA3211B2F10E90050C3E3 /* ParseUI.framework */; };
 		942FA4451B2F10E90050C3E3 /* chat_audio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 942FA3251B2F10E90050C3E3 /* chat_audio@2x.png */; };
@@ -187,6 +186,19 @@
 		942FA4F81B2F1B0E0050C3E3 /* image5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 942FA4F21B2F1B0E0050C3E3 /* image5.jpg */; };
 		942FA4F91B2F1B0E0050C3E3 /* image6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 942FA4F31B2F1B0E0050C3E3 /* image6.jpg */; };
 		942FA5031B301DEA0050C3E3 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942FA5021B301DEA0050C3E3 /* Test.swift */; };
+		948E8FA91B3BCDFB002556D0 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948E8FA81B3BCDFB002556D0 /* FBSDKShareKit.framework */; };
+		948E8FAF1B3C3A4C002556D0 /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 948E8FAB1B3C3A4C002556D0 /* Info-iOS.plist */; };
+		948E8FB01B3C3A4C002556D0 /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 948E8FAC1B3C3A4C002556D0 /* Info-OSX.plist */; };
+		948E8FB11B3C3A4C002556D0 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8FAE1B3C3A4C002556D0 /* SwiftyJSON.swift */; };
+		948E8FB31B3D21BC002556D0 /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8FB21B3D21BC002556D0 /* HttpService.swift */; };
+		948E8FB91B3DD8EC002556D0 /* LLARingSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 948E8FB81B3DD8EC002556D0 /* LLARingSpinnerView.m */; };
+		948E8FBD1B3DDCE9002556D0 /* VMGearLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 948E8FBC1B3DDCE9002556D0 /* VMGearLoadingView.m */; };
+		94A4B7091B3B163B0083488A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A4B7071B3B163B0083488A /* FBSDKCoreKit.framework */; };
+		94A4B70A1B3B163B0083488A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A4B7081B3B163B0083488A /* FBSDKLoginKit.framework */; };
+		94A4B70E1B3B16B10083488A /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B70B1B3B16B10083488A /* InitialView.swift */; };
+		94A4B7101B3B16B10083488A /* PhoneLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B70D1B3B16B10083488A /* PhoneLoginView.swift */; };
+		94A4B7121B3B17710083488A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B7111B3B17710083488A /* LoginView.swift */; };
+		94A4B7141B3BBE1D0083488A /* SetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A4B7131B3BBE1D0083488A /* SetProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,7 +251,6 @@
 		942FA31C1B2F10E90050C3E3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		942FA31D1B2F10E90050C3E3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		942FA31E1B2F10E90050C3E3 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		942FA31F1B2F10E90050C3E3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		942FA3201B2F10E90050C3E3 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		942FA3211B2F10E90050C3E3 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		942FA3251B2F10E90050C3E3 /* chat_audio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_audio@2x.png"; sourceTree = "<group>"; };
@@ -467,6 +478,22 @@
 		942FA4F21B2F1B0E0050C3E3 /* image5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image5.jpg; sourceTree = "<group>"; };
 		942FA4F31B2F1B0E0050C3E3 /* image6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image6.jpg; sourceTree = "<group>"; };
 		942FA5021B301DEA0050C3E3 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		948E8FA81B3BCDFB002556D0 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		948E8FAB1B3C3A4C002556D0 /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		948E8FAC1B3C3A4C002556D0 /* Info-OSX.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-OSX.plist"; sourceTree = "<group>"; };
+		948E8FAD1B3C3A4C002556D0 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
+		948E8FAE1B3C3A4C002556D0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		948E8FB21B3D21BC002556D0 /* HttpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpService.swift; path = ../Audio/HttpService.swift; sourceTree = "<group>"; };
+		948E8FB71B3DD8EC002556D0 /* LLARingSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLARingSpinnerView.h; sourceTree = "<group>"; };
+		948E8FB81B3DD8EC002556D0 /* LLARingSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLARingSpinnerView.m; sourceTree = "<group>"; };
+		948E8FBB1B3DDCE9002556D0 /* VMGearLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMGearLoadingView.h; sourceTree = "<group>"; };
+		948E8FBC1B3DDCE9002556D0 /* VMGearLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMGearLoadingView.m; sourceTree = "<group>"; };
+		94A4B7071B3B163B0083488A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		94A4B7081B3B163B0083488A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		94A4B70B1B3B16B10083488A /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		94A4B70D1B3B16B10083488A /* PhoneLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLoginView.swift; sourceTree = "<group>"; };
+		94A4B7111B3B17710083488A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		94A4B7131B3BBE1D0083488A /* SetProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -477,9 +504,12 @@
 				942FA4E91B2F136F0050C3E3 /* libsqlite3.dylib in Frameworks */,
 				942FA4E71B2F13690050C3E3 /* SystemConfiguration.framework in Frameworks */,
 				942FA4E51B2F13610050C3E3 /* MobileCoreServices.framework in Frameworks */,
+				94A4B7091B3B163B0083488A /* FBSDKCoreKit.framework in Frameworks */,
 				942FA4E31B2F135B0050C3E3 /* libstdc++.6.dylib in Frameworks */,
+				94A4B70A1B3B163B0083488A /* FBSDKLoginKit.framework in Frameworks */,
 				942FA4E11B2F13500050C3E3 /* Accounts.framework in Frameworks */,
 				942FA4DF1B2F13480050C3E3 /* AudioToolbox.framework in Frameworks */,
+				948E8FA91B3BCDFB002556D0 /* FBSDKShareKit.framework in Frameworks */,
 				942FA4DD1B2F133F0050C3E3 /* CFNetwork.framework in Frameworks */,
 				942FA4DB1B2F13370050C3E3 /* CoreGraphics.framework in Frameworks */,
 				942FA4D91B2F132C0050C3E3 /* CoreLocation.framework in Frameworks */,
@@ -494,7 +524,6 @@
 				942FA4441B2F10E90050C3E3 /* ParseUI.framework in Frameworks */,
 				942FA4431B2F10E90050C3E3 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				942FA43F1B2F10E90050C3E3 /* FacebookSDK.framework in Frameworks */,
-				942FA4421B2F10E90050C3E3 /* ParseFacebookUtils.framework in Frameworks */,
 				942FA4411B2F10E90050C3E3 /* ParseCrashReporting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +541,10 @@
 		8951A4E31B39CDE80048D593 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				94A4B70B1B3B16B10083488A /* InitialView.swift */,
+				94A4B7111B3B17710083488A /* LoginView.swift */,
+				94A4B70D1B3B16B10083488A /* PhoneLoginView.swift */,
+				94A4B7131B3BBE1D0083488A /* SetProfileView.swift */,
 				89594BFA1B3ABF6600A8CF8B /* Favor */,
 				8951A4E41B39CEED0048D593 /* Profile */,
 			);
@@ -781,6 +814,7 @@
 		942FA2F51B2F10E90050C3E3 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				948E8FB21B3D21BC002556D0 /* HttpService.swift */,
 				942FA2F61B2F10E90050C3E3 /* Favor.swift */,
 				942FA2F71B2F10E90050C3E3 /* User.swift */,
 			);
@@ -790,6 +824,9 @@
 		942FA31A1B2F10E90050C3E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				948E8FA81B3BCDFB002556D0 /* FBSDKShareKit.framework */,
+				94A4B7071B3B163B0083488A /* FBSDKCoreKit.framework */,
+				94A4B7081B3B163B0083488A /* FBSDKLoginKit.framework */,
 				942FA4E81B2F136F0050C3E3 /* libsqlite3.dylib */,
 				942FA4E61B2F13690050C3E3 /* SystemConfiguration.framework */,
 				942FA4E41B2F13610050C3E3 /* MobileCoreServices.framework */,
@@ -809,7 +846,6 @@
 				942FA31C1B2F10E90050C3E3 /* FacebookSDK.framework */,
 				942FA31D1B2F10E90050C3E3 /* Parse.framework */,
 				942FA31E1B2F10E90050C3E3 /* ParseCrashReporting.framework */,
-				942FA31F1B2F10E90050C3E3 /* ParseFacebookUtils.framework */,
 				942FA3201B2F10E90050C3E3 /* ParseFacebookUtilsV4.framework */,
 				942FA3211B2F10E90050C3E3 /* ParseUI.framework */,
 			);
@@ -901,6 +937,9 @@
 		942FA33E1B2F10E90050C3E3 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				948E8FBA1B3DDCE9002556D0 /* VMGearLoadingView */,
+				948E8FB61B3DD8EC002556D0 /* LLARingSpinnerView */,
+				948E8FAA1B3C3A4C002556D0 /* SwiftyJSON */,
 				89594BFF1B3ACCFE00A8CF8B /* FoldingTabBar */,
 				942FA33F1B2F10E90050C3E3 /* AFNetworking */,
 				942FA3661B2F10E90050C3E3 /* DatePickerTableCell */,
@@ -1367,6 +1406,35 @@
 			path = UIFloatLabelTextField;
 			sourceTree = "<group>";
 		};
+		948E8FAA1B3C3A4C002556D0 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				948E8FAB1B3C3A4C002556D0 /* Info-iOS.plist */,
+				948E8FAC1B3C3A4C002556D0 /* Info-OSX.plist */,
+				948E8FAD1B3C3A4C002556D0 /* SwiftyJSON.h */,
+				948E8FAE1B3C3A4C002556D0 /* SwiftyJSON.swift */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		948E8FB61B3DD8EC002556D0 /* LLARingSpinnerView */ = {
+			isa = PBXGroup;
+			children = (
+				948E8FB71B3DD8EC002556D0 /* LLARingSpinnerView.h */,
+				948E8FB81B3DD8EC002556D0 /* LLARingSpinnerView.m */,
+			);
+			path = LLARingSpinnerView;
+			sourceTree = "<group>";
+		};
+		948E8FBA1B3DDCE9002556D0 /* VMGearLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				948E8FBB1B3DDCE9002556D0 /* VMGearLoadingView.h */,
+				948E8FBC1B3DDCE9002556D0 /* VMGearLoadingView.m */,
+			);
+			path = VMGearLoadingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1416,6 +1484,7 @@
 				TargetAttributes = {
 					942FA2C41B2F0FED0050C3E3 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 5R3X245WBY;
 					};
 					942FA2D91B2F0FED0050C3E3 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -1458,12 +1527,14 @@
 				942FA4C11B2F10E90050C3E3 /* Info.plist in Resources */,
 				942FA2D51B2F0FED0050C3E3 /* LaunchScreen.xib in Resources */,
 				942FA4F91B2F1B0E0050C3E3 /* image6.jpg in Resources */,
+				948E8FB01B3C3A4C002556D0 /* Info-OSX.plist in Resources */,
 				942FA4C21B2F10E90050C3E3 /* back@2x.png in Resources */,
 				942FA48E1B2F10E90050C3E3 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				942FA44C1B2F10E90050C3E3 /* recent_blank@2x.png in Resources */,
 				942FA48C1B2F10E90050C3E3 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				942FA4981B2F10E90050C3E3 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				942FA4991B2F10E90050C3E3 /* Info.plist in Resources */,
+				948E8FAF1B3C3A4C002556D0 /* Info-iOS.plist in Resources */,
 				942FA4961B2F10E90050C3E3 /* JSQMessagesToolbarContentView.xib in Resources */,
 				942FA4F71B2F1B0E0050C3E3 /* image4.jpg in Resources */,
 				942FA4F41B2F1B0E0050C3E3 /* image1.jpg in Resources */,
@@ -1505,7 +1576,9 @@
 				942FA4A61B2F10E90050C3E3 /* RNGridMenu.m in Sources */,
 				942FA4C91B2F10E90050C3E3 /* UIFloatLabelTextField.swift in Sources */,
 				942FA45B1B2F10E90050C3E3 /* AFSecurityPolicy.m in Sources */,
+				94A4B7141B3BBE1D0083488A /* SetProfileView.swift in Sources */,
 				942FA4B51B2F10E90050C3E3 /* FormSelectorCell.swift in Sources */,
+				94A4B7101B3B16B10083488A /* PhoneLoginView.swift in Sources */,
 				942FA4861B2F10E90050C3E3 /* JSQPhotoMediaItem.m in Sources */,
 				942FA4921B2F10E90050C3E3 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				89594BFE1B3ACB6200A8CF8B /* FavorDetailTable.swift in Sources */,
@@ -1574,7 +1647,11 @@
 				942FA4831B2F10E90050C3E3 /* JSQMessage.m in Sources */,
 				942FA45E1B2F10E90050C3E3 /* AFURLResponseSerialization.m in Sources */,
 				942FA4BC1B2F10E90050C3E3 /* FormSelector.swift in Sources */,
+				948E8FB91B3DD8EC002556D0 /* LLARingSpinnerView.m in Sources */,
+				948E8FB31B3D21BC002556D0 /* HttpService.swift in Sources */,
+				948E8FBD1B3DDCE9002556D0 /* VMGearLoadingView.m in Sources */,
 				942FA4C41B2F10E90050C3E3 /* MapViewController.swift in Sources */,
+				94A4B70E1B3B16B10083488A /* InitialView.swift in Sources */,
 				942FA4741B2F10E90050C3E3 /* UIImage+JSQMessages.m in Sources */,
 				942FA4761B2F10E90050C3E3 /* JSQMessagesKeyboardController.m in Sources */,
 				942FA46C1B2F10E90050C3E3 /* IDMZoomingScrollView.m in Sources */,
@@ -1587,6 +1664,7 @@
 				942FA4691B2F10E90050C3E3 /* IDMPhotoBrowser.m in Sources */,
 				89594C231B3ACCFE00A8CF8B /* YALFoldingTabBarController.m in Sources */,
 				942FA4BE1B2F10E90050C3E3 /* FormDescriptor.swift in Sources */,
+				948E8FB11B3C3A4C002556D0 /* SwiftyJSON.swift in Sources */,
 				942FA4221B2F10E90050C3E3 /* Favor.swift in Sources */,
 				942FA4701B2F10E90050C3E3 /* NSBundle+JSQMessages.m in Sources */,
 				942FA4231B2F10E90050C3E3 /* User.swift in Sources */,
@@ -1601,6 +1679,7 @@
 				942FA4201B2F10E90050C3E3 /* AudioPlayer.swift in Sources */,
 				942FA49C1B2F10E90050C3E3 /* LocationManager.swift in Sources */,
 				942FA4AD1B2F10E90050C3E3 /* FormBaseCell.swift in Sources */,
+				94A4B7121B3B17710083488A /* LoginView.swift in Sources */,
 				942FA4A21B2F10E90050C3E3 /* AlertController.swift in Sources */,
 				89594C251B3ACCFE00A8CF8B /* YALFoldingTabBar.m in Sources */,
 				942FA4951B2F10E90050C3E3 /* JSQMessagesToolbarContentView.m in Sources */,
@@ -1741,13 +1820,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Whistle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Whistle/Whistle-Bridging-Header.h";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = NO;
 			};
@@ -1757,13 +1840,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Whistle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Whistle/Whistle-Bridging-Header.h";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = NO;
 			};

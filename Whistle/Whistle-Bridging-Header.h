@@ -7,10 +7,12 @@
 #ifndef Whistle_Bridging_Header_h
 #define Whistle_Bridging_Header_h
 
-// If you are using Facebook, uncomment this line to get automatic import of the header inside your project.
-// #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 #import "UICountingLabel.h"
+#import "LLARingSpinnerView.h"
+#import "VMGearLoadingView.h"
 
 //model
 #import "YALTabBarItem.h"

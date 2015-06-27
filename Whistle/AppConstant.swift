@@ -58,4 +58,8 @@ struct Constants {
         static let BorderWidthMid : CGFloat = 3
     }
     
+    struct Notification {
+        static let SetProfileView : String = "loadSetProfileView"
+    }
+    
 }
