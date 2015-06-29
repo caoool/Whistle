@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uOF-fL-SPG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F7d-hv-LTH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -27,12 +27,13 @@
                     </view>
                     <connections>
                         <segue destination="H8C-m1-NZ4" kind="show" identifier="toLogin" id="foe-5s-bN1"/>
-                        <segue destination="BLh-JR-1qA" kind="show" identifier="toMain" id="osp-A1-90q"/>
+                        <segue destination="BLh-JR-1qA" kind="show" identifier="toSetProfile" id="osp-A1-90q"/>
+                        <segue destination="1mX-Xv-t7N" kind="show" identifier="toMain" id="VYC-PQ-WDg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ty5-G8-gAs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4420" y="814"/>
+            <point key="canvasLocation" x="1708" y="-338"/>
         </scene>
         <!--Phone Login View-->
         <scene sceneID="XgM-ev-W70">
@@ -158,12 +159,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CBk-yN-sxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4420" y="1616"/>
+            <point key="canvasLocation" x="1708" y="464"/>
         </scene>
-        <!--Profile-->
+        <!--Set Profile-->
         <scene sceneID="WFF-6K-es6">
             <objects>
-                <tableViewController id="q1N-K1-Qtn" customClass="SetProfileView" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="q1N-K1-Qtn" userLabel="Set Profile" customClass="SetProfileView" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="SCK-Z9-IHi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -318,12 +319,11 @@
                         <outlet property="message" destination="bSU-yW-dxz" id="RzK-S7-OHB"/>
                         <outlet property="profileImage" destination="h6H-lv-bOC" id="s3W-rk-53m"/>
                         <outlet property="textField" destination="8OX-F5-KqL" id="gMM-fP-gNf"/>
-                        <segue destination="DtD-z6-O2n" kind="presentation" identifier="setProfileToMain" id="5kB-D9-Je1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QD3-ag-sTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="1616"/>
+            <point key="canvasLocation" x="878" y="464"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fSQ-jl-TVr">
@@ -339,7 +339,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1A-pe-Y5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="814"/>
+            <point key="canvasLocation" x="878" y="-338"/>
         </scene>
         <!--Login View-->
         <scene sceneID="jON-zI-4Tt">
@@ -406,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYL-gy-gz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5226" y="1616"/>
+            <point key="canvasLocation" x="2482" y="464"/>
         </scene>
         <!--Favor View-->
         <scene sceneID="x6q-d4-zBd">
@@ -483,16 +483,17 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="T1b-OF-239"/>
+                    <tabBarItem key="tabBarItem" title="Main" id="T1b-OF-239"/>
                     <connections>
                         <outlet property="detailView" destination="KJl-7h-7iW" id="hbx-JK-wOE"/>
                         <outlet property="foldButton" destination="xaA-a4-qB3" id="pIu-VG-YZt"/>
                         <outlet property="mapView" destination="Vw0-2T-85j" id="uSX-8Q-1h9"/>
+                        <segue destination="vXm-vM-Y46" kind="presentation" identifier="mainToNew" id="2oX-NY-y1Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMF-ww-1S6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="2414"/>
+            <point key="canvasLocation" x="878" y="2048"/>
         </scene>
         <!--New Favor-->
         <scene sceneID="DFD-ev-aqV">
@@ -765,13 +766,13 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nm0-MA-GGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5309" y="2414"/>
+            <point key="canvasLocation" x="878" y="4206"/>
         </scene>
         <!--Favor Detail Table-->
         <scene sceneID="fkC-zK-58T">
             <objects>
                 <tableViewController id="Fhb-ri-bAq" customClass="FavorDetailTable" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sdX-xr-aTa" customClass="favor">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sdX-xr-aTa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="351"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -783,7 +784,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H1X-HO-AmV" id="j2h-g1-0So">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="SmH-13-CpC">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SmH-13-CpC">
                                                     <rect key="frame" x="542" y="0.0" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="OBf-SY-tf7"/>
@@ -1087,7 +1088,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhX-TM-bSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="3035.5"/>
+            <point key="canvasLocation" x="878" y="2755.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B2E-km-XOp">
@@ -1105,7 +1106,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGd-Sa-w5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4420" y="2414"/>
+            <point key="canvasLocation" x="878" y="3406"/>
         </scene>
         <!--Add Location-->
         <scene sceneID="4uu-17-bK7">
@@ -1256,51 +1257,12 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0w-Of-jsy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5309" y="3271"/>
+            <point key="canvasLocation" x="878" y="4987"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="wxi-Ew-JfW">
-            <objects>
-                <viewController id="3Ki-KA-lXA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="G1j-Y5-WOT"/>
-                        <viewControllerLayoutGuide type="bottom" id="1vI-8s-zVR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dDd-Em-ahn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.36862745099999999" green="0.35686274509999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="EaU-Xy-5rB"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wfW-fR-JHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1463" y="2438"/>
-        </scene>
-        <!--Item 1-->
-        <scene sceneID="oMD-7F-kEM">
-            <objects>
-                <viewController id="Sdf-ur-Ak5" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EI6-hM-P7a"/>
-                        <viewControllerLayoutGuide type="bottom" id="jgp-8Q-FXE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mw7-UD-YaW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.57656920550000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="PQO-xi-bMz"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XyS-eG-U85" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1463" y="1795"/>
-        </scene>
-        <!--Folding Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="8c4-dj-Anc">
             <objects>
-                <tabBarController id="1mX-Xv-t7N" customClass="YALFoldingTabBarController" sceneMemberID="viewController">
+                <tabBarController id="1mX-Xv-t7N" customClass="TabBarController" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="N8W-U2-U0D">
@@ -1309,17 +1271,17 @@ See the below tutorial , It grow at runtime while the user type the text using k
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Sdf-ur-Ak5" kind="relationship" relationship="viewControllers" id="1ZA-o6-kSq"/>
-                        <segue destination="3Ki-KA-lXA" kind="relationship" relationship="viewControllers" id="2Qo-Oi-5vr"/>
-                        <segue destination="dKy-sH-vS3" kind="relationship" relationship="viewControllers" id="D2H-c1-naD"/>
                         <segue destination="NYH-4b-7TZ" kind="relationship" relationship="viewControllers" id="4LZ-uk-Jh7"/>
+                        <segue destination="DtD-z6-O2n" kind="relationship" relationship="viewControllers" id="uU0-A2-Vka"/>
+                        <segue destination="11N-rX-i1h" kind="relationship" relationship="viewControllers" id="xQZ-Zp-6gs"/>
+                        <segue destination="uOF-fL-SPG" kind="relationship" relationship="viewControllers" id="4Zx-wy-WYQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fx2-54-Vo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735" y="2249"/>
+            <point key="canvasLocation" x="1708" y="1268"/>
         </scene>
-        <!--Item 4-->
+        <!--Current-->
         <scene sceneID="Ayo-PQ-mK1">
             <objects>
                 <viewController id="NYH-4b-7TZ" sceneMemberID="viewController">
@@ -1332,31 +1294,11 @@ See the below tutorial , It grow at runtime while the user type the text using k
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.2274509804" green="0.68627450980000004" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 4" id="Xl5-H2-zJg"/>
+                    <tabBarItem key="tabBarItem" title="Current" id="Xl5-H2-zJg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eep-J1-cfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="679" y="3184"/>
-        </scene>
-        <!--Item 3-->
-        <scene sceneID="NX1-Zw-GaU">
-            <objects>
-                <viewController id="dKy-sH-vS3" userLabel="Item 3" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tiB-c8-ul5"/>
-                        <viewControllerLayoutGuide type="bottom" id="hJN-F5-Wu0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ztQ-Gv-hGV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.36862745099999999" green="0.35686274509999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Itemc3" id="YGG-Ya-tJR"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ttj-yr-Ri6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1463" y="3190"/>
+            <point key="canvasLocation" x="1708" y="2048"/>
         </scene>
         <!--Profile-->
         <scene sceneID="NyU-rr-Ie8">
@@ -1374,7 +1316,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                 <rect key="frame" x="0.0" y="20" width="600" height="229"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♡ 300" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXL-fe-eyu" userLabel="Likes">
-                                        <rect key="frame" x="276" y="206" width="47.5" height="20.5"/>
+                                        <rect key="frame" x="276" y="206" width="48" height="21"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1382,7 +1324,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                         <size key="shadowOffset" width="0.0" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☆ 100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZA-Ms-cYl" userLabel="Favors">
-                                        <rect key="frame" x="76" y="206" width="47.5" height="20.5"/>
+                                        <rect key="frame" x="76" y="206" width="48" height="21"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1399,7 +1341,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijm-9a-vjx">
-                                <rect key="frame" x="0.0" y="249" width="600" height="351"/>
+                                <rect key="frame" x="0.0" y="249" width="600" height="302"/>
                                 <connections>
                                     <segue destination="ecD-Jj-uoT" kind="embed" id="5fy-7f-9Jv"/>
                                 </connections>
@@ -1421,7 +1363,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGt-1Q-eV7" userLabel="Name">
-                                <rect key="frame" x="278" y="168" width="43.5" height="20.5"/>
+                                <rect key="frame" x="278" y="168" width="44" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1429,7 +1371,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9U-q5-Feo" userLabel="Line">
-                                <rect key="frame" x="288" y="193" width="23.5" height="15.5"/>
+                                <rect key="frame" x="288" y="194" width="24" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1463,6 +1405,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="PAu-MN-Shv"/>
                     <connections>
                         <outlet property="favorsLabel" destination="YZA-Ms-cYl" id="bfM-kK-aau"/>
                         <outlet property="infoView" destination="wjN-pk-Tfo" id="qgi-Xz-WwG"/>
@@ -1474,14 +1417,142 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4DZ-nH-YwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6598" y="1970"/>
+            <point key="canvasLocation" x="2542" y="2048"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="3Ic-sP-JFb">
+            <objects>
+                <tableViewController id="b0i-3o-eCa" customClass="RecentView" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="76z-AQ-A4z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentCell" rowHeight="70" id="fbE-pI-8vh" customClass="RecentCell" customModule="Whistle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbE-pI-8vh" id="TeJ-JF-Kuj">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recent_blank.png" translatesAutoresizingMaskIntoConstraints="NO" id="yJa-KT-ZKr">
+                                            <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="dAH-dF-z87"/>
+                                                <constraint firstAttribute="width" constant="50" id="wDb-WZ-6RB"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCJ-WD-HBV">
+                                            <rect key="frame" x="70" y="13" width="470" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emH-Dk-gzH">
+                                            <rect key="frame" x="70" y="32" width="470" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjx-me-jcs">
+                                            <rect key="frame" x="540" y="13" width="50" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                            <color key="textColor" red="0.47843137250000001" green="0.7843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 new" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLO-63-znS">
+                                            <rect key="frame" x="540" y="32" width="50" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="exP-U4-8m6"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bjx-me-jcs" firstAttribute="top" secondItem="SCJ-WD-HBV" secondAttribute="top" id="3IR-lC-lyi"/>
+                                        <constraint firstItem="emH-Dk-gzH" firstAttribute="baseline" secondItem="fLO-63-znS" secondAttribute="baseline" id="5tH-yK-oyD"/>
+                                        <constraint firstItem="SCJ-WD-HBV" firstAttribute="leading" secondItem="TeJ-JF-Kuj" secondAttribute="leadingMargin" constant="62" id="7w5-II-kp9"/>
+                                        <constraint firstItem="emH-Dk-gzH" firstAttribute="top" secondItem="fLO-63-znS" secondAttribute="top" id="BRm-kS-DzU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Bjx-me-jcs" secondAttribute="bottom" constant="27" id="FoC-h6-Ae5"/>
+                                        <constraint firstItem="fLO-63-znS" firstAttribute="leading" secondItem="Bjx-me-jcs" secondAttribute="leading" id="Jek-a7-k3h"/>
+                                        <constraint firstItem="yJa-KT-ZKr" firstAttribute="top" secondItem="TeJ-JF-Kuj" secondAttribute="topMargin" constant="2" id="L0b-gw-6Wj"/>
+                                        <constraint firstItem="Bjx-me-jcs" firstAttribute="leading" secondItem="SCJ-WD-HBV" secondAttribute="trailing" id="S35-NL-cri"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="fLO-63-znS" secondAttribute="trailing" constant="2" id="VC3-vw-JCB"/>
+                                        <constraint firstItem="fLO-63-znS" firstAttribute="top" secondItem="TeJ-JF-Kuj" secondAttribute="topMargin" constant="24" id="gUG-Vu-VWG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fLO-63-znS" secondAttribute="bottom" constant="8" id="hcy-hh-psk"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Bjx-me-jcs" secondAttribute="trailing" constant="2" id="ixr-tw-dnI"/>
+                                        <constraint firstItem="yJa-KT-ZKr" firstAttribute="leading" secondItem="TeJ-JF-Kuj" secondAttribute="leadingMargin" constant="2" id="jEf-TF-PLF"/>
+                                        <constraint firstItem="Bjx-me-jcs" firstAttribute="top" secondItem="TeJ-JF-Kuj" secondAttribute="topMargin" constant="5" id="rcS-4s-kxS"/>
+                                        <constraint firstItem="Bjx-me-jcs" firstAttribute="bottom" secondItem="SCJ-WD-HBV" secondAttribute="bottom" id="uB4-zx-Cfk"/>
+                                        <constraint firstItem="emH-Dk-gzH" firstAttribute="trailing" secondItem="SCJ-WD-HBV" secondAttribute="trailing" id="wsq-8z-U9y"/>
+                                        <constraint firstItem="emH-Dk-gzH" firstAttribute="leading" secondItem="TeJ-JF-Kuj" secondAttribute="leadingMargin" constant="62" id="yWy-QA-unp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageUser" destination="yJa-KT-ZKr" id="T86-v3-n09"/>
+                                    <outlet property="labelCounter" destination="fLO-63-znS" id="jOz-Yv-CKI"/>
+                                    <outlet property="labelElapsed" destination="Bjx-me-jcs" id="y4A-7U-slF"/>
+                                    <outlet property="labelLastMessage" destination="emH-Dk-gzH" id="sha-kU-uYz"/>
+                                    <outlet property="labelUserName" destination="SCJ-WD-HBV" id="iGe-pV-2hE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b0i-3o-eCa" id="J39-OX-t2u"/>
+                            <outlet property="delegate" destination="b0i-3o-eCa" id="Kvr-KE-6cE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="6la-ll-Knf"/>
+                    <connections>
+                        <segue destination="wMj-ZF-ihS" kind="show" identifier="recentToChat" id="3w3-Dt-wAm"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LaZ-ib-7po" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3400" y="2947"/>
+        </scene>
+        <!--Chat View-->
+        <scene sceneID="grX-Jm-2ej">
+            <objects>
+                <viewController id="wMj-ZF-ihS" customClass="ChatView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t0d-zx-ygW"/>
+                        <viewControllerLayoutGuide type="bottom" id="MSH-89-Yce"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S0K-ai-zVR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ccp-ja-3ws" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3400" y="3696"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="uEQ-8f-WMy">
+            <objects>
+                <navigationController id="11N-rX-i1h" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chat" id="s35-bM-xkK"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9fS-wF-PGK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="b0i-3o-eCa" kind="relationship" relationship="rootViewController" id="83W-ai-GUB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uWw-KF-1vG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3400" y="2048"/>
         </scene>
         <!--Profile Favors Table-->
         <scene sceneID="kwg-wf-kVV">
             <objects>
                 <tableViewController id="ecD-Jj-uoT" customClass="ProfileFavorsTable" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OjZ-f1-73W">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="351"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="302"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1491,14 +1562,14 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DR4-v2-C9d">
-                                            <rect key="frame" x="22.5" y="-2" width="1" height="64"/>
+                                            <rect key="frame" x="23" y="-2" width="1" height="64"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="1" id="NZm-7q-gUb"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcp-oX-jFb">
-                                            <rect key="frame" x="8" y="23" width="26" height="14.5"/>
+                                            <rect key="frame" x="8" y="23" width="26" height="15"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1576,12 +1647,12 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoq-Vm-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6598" y="2720.5"/>
+            <point key="canvasLocation" x="2542" y="2798.5"/>
         </scene>
-        <!--Profile-->
+        <!--Profile Setting-->
         <scene sceneID="09P-ST-6ii">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="U3p-d8-AtS" customClass="ProfileSettingTable" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="U3p-d8-AtS" userLabel="Profile Setting" customClass="ProfileSettingTable" customModule="Whistle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ic7-Pq-Ap1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1929,7 +2000,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EiN-7O-IRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8162" y="1970"/>
+            <point key="canvasLocation" x="2542" y="4272"/>
         </scene>
         <!--Status-->
         <scene sceneID="496-he-H43">
@@ -1948,7 +2019,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Mr fuck off please go fuck yourself!!!" translatesAutoresizingMaskIntoConstraints="NO" id="Oop-Nw-9Wa">
-                                                    <rect key="frame" x="8" y="8" width="584" height="183.5"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="183"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1978,7 +2049,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8o-vV-mgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8162" y="2856"/>
+            <point key="canvasLocation" x="2542" y="5158"/>
         </scene>
         <!--Region-->
         <scene sceneID="38k-wd-zDD">
@@ -1996,7 +2067,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                                 <rect key="frame" x="0.0" y="438" width="600" height="162"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Region" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUt-cq-bmV">
-                                <rect key="frame" x="16" y="72" width="568" height="20.5"/>
+                                <rect key="frame" x="16" y="72" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -2019,7 +2090,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qho-3i-Ar7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8823" y="2857"/>
+            <point key="canvasLocation" x="3203" y="5159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Llh-P5-n9M">
@@ -2037,11 +2108,10 @@ See the below tutorial , It grow at runtime while the user type the text using k
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYB-Qx-pOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7350" y="1970"/>
+            <point key="canvasLocation" x="2542" y="3496"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="65" height="65"/>
         <image name="default_user_photo" width="150" height="150"/>
         <image name="facebook_icon" width="30" height="30"/>
         <image name="login_back" width="25" height="25"/>
@@ -2051,6 +2121,7 @@ See the below tutorial , It grow at runtime while the user type the text using k
         <image name="logo" width="213" height="48"/>
         <image name="me_jobs_finished" width="65" height="65"/>
         <image name="profile_photo_add" width="52" height="52"/>
+        <image name="recent_blank.png" width="50" height="50"/>
         <image name="settings_blank.png" width="70" height="70"/>
         <image name="twitter_icon" width="30" height="31"/>
     </resources>

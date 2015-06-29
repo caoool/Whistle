@@ -54,7 +54,6 @@ struct Constants {
         static let TextDark2 : UIColor = UIColor.darkGrayColor()
         static let AudioViewColor: UIColor = UIColor.blackColor()
         static let AudioViewProgressColor: UIColor = UIColor.grayColor()
-        
         static let IsAvailableHaloColor: UIColor = UIColor.blueColor()
         static let NotAvailableHaloColor: UIColor = UIColor.grayColor()
     }

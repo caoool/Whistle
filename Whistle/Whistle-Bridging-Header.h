@@ -19,11 +19,9 @@
 
 //model
 #import "YALTabBarItem.h"
-
-//controller
 #import "YALFoldingTabBarController.h"
-
-//helpers
 #import "YALAnimatingTabBarConstants.h"
+
+#import "ChatView.h"
 
 #endif
