@@ -14,6 +14,9 @@
 		89594C231B3ACCFE00A8CF8B /* YALFoldingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C131B3ACCFE00A8CF8B /* YALFoldingTabBarController.m */; };
 		89594C241B3ACCFE00A8CF8B /* YALTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C171B3ACCFE00A8CF8B /* YALTabBarItem.m */; };
 		89594C251B3ACCFE00A8CF8B /* YALFoldingTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C1E1B3ACCFE00A8CF8B /* YALFoldingTabBar.m */; };
+		89755A001B402F6200D31E2F /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897559FF1B402F6200D31E2F /* ProfileSettingTable.swift */; };
+		89755A021B407F0A00D31E2F /* ProfileChangeStatusTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89755A011B407F0A00D31E2F /* ProfileChangeStatusTable.swift */; };
+		89755A081B4087C400D31E2F /* ProfileRegionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89755A071B4087C400D31E2F /* ProfileRegionPickerView.swift */; };
 		898B1A0B1B3F2F0600DD852F /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A071B3F2F0600DD852F /* InitialView.swift */; };
 		898B1A0C1B3F2F0600DD852F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A081B3F2F0600DD852F /* LoginView.swift */; };
 		898B1A0D1B3F2F0600DD852F /* PhoneLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A091B3F2F0600DD852F /* PhoneLoginView.swift */; };
@@ -248,6 +251,9 @@
 		89594C1A1B3ACCFE00A8CF8B /* YALTabBarInteracting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALTabBarInteracting.h; sourceTree = "<group>"; };
 		89594C1D1B3ACCFE00A8CF8B /* YALFoldingTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALFoldingTabBar.h; sourceTree = "<group>"; };
 		89594C1E1B3ACCFE00A8CF8B /* YALFoldingTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALFoldingTabBar.m; sourceTree = "<group>"; };
+		897559FF1B402F6200D31E2F /* ProfileSettingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
+		89755A011B407F0A00D31E2F /* ProfileChangeStatusTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileChangeStatusTable.swift; sourceTree = "<group>"; };
+		89755A071B4087C400D31E2F /* ProfileRegionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRegionPickerView.swift; sourceTree = "<group>"; };
 		898B1A071B3F2F0600DD852F /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		898B1A081B3F2F0600DD852F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		898B1A091B3F2F0600DD852F /* PhoneLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLoginView.swift; sourceTree = "<group>"; };
@@ -1465,6 +1471,9 @@
 				946FD54B1B3F25A200472E91 /* ProfileView.swift */,
 				946FD54A1B3F25A200472E91 /* ProfileFavorsTable.swift */,
 				946FD5491B3F25A200472E91 /* ProfileFavorCell.swift */,
+				897559FF1B402F6200D31E2F /* ProfileSettingTable.swift */,
+				89755A011B407F0A00D31E2F /* ProfileChangeStatusTable.swift */,
+				89755A071B4087C400D31E2F /* ProfileRegionPickerView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1721,6 +1730,7 @@
 				942FA4C01B2F10E90050C3E3 /* FormSectionDescriptor.swift in Sources */,
 				942FA4771B2F10E90050C3E3 /* JSQMessagesViewController.m in Sources */,
 				942FA4811B2F10E90050C3E3 /* JSQLocationMediaItem.m in Sources */,
+				89755A081B4087C400D31E2F /* ProfileRegionPickerView.swift in Sources */,
 				942FA4871B2F10E90050C3E3 /* JSQVideoMediaItem.m in Sources */,
 				942FA4211B2F10E90050C3E3 /* AudioRecorder.swift in Sources */,
 				942FA46D1B2F10E90050C3E3 /* ImageLoader.swift in Sources */,
@@ -1732,6 +1742,7 @@
 				94DED7C81B3EF144002B9F3B /* ImageCollectionViewCell.swift in Sources */,
 				942FA49E1B2F10E90050C3E3 /* OneShotLocationManager.swift in Sources */,
 				942FA4A11B2F10E90050C3E3 /* PIRipple.swift in Sources */,
+				89755A021B407F0A00D31E2F /* ProfileChangeStatusTable.swift in Sources */,
 				942FA4901B2F10E90050C3E3 /* JSQMessagesInputToolbar.m in Sources */,
 				942FA46A1B2F10E90050C3E3 /* IDMTapDetectingImageView.m in Sources */,
 				942FA46F1B2F10E90050C3E3 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
@@ -1754,6 +1765,7 @@
 				942FA4A31B2F10E90050C3E3 /* SimpleAlert.swift in Sources */,
 				89594C1F1B3ACCFE00A8CF8B /* YALSpringAnimation.m in Sources */,
 				942FA4711B2F10E90050C3E3 /* NSString+JSQMessages.m in Sources */,
+				89755A001B402F6200D31E2F /* ProfileSettingTable.swift in Sources */,
 				942FA45D1B2F10E90050C3E3 /* AFURLRequestSerialization.m in Sources */,
 				942FA4C61B2F10E90050C3E3 /* Venue.swift in Sources */,
 				942FA4841B2F10E90050C3E3 /* JSQMessagesAvatarImage.m in Sources */,

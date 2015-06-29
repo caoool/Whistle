@@ -33,7 +33,6 @@ class ProfileView: UIViewController {
         super.viewDidLoad()
 
         colorConfig()
-        
         addGestures()
         
     }
