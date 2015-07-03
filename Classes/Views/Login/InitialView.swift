@@ -15,9 +15,13 @@ class InitialView: UIViewController {
     override func viewDidAppear(animated: Bool) {
         let currentUser = PFUser.currentUser()
         println(currentUser?.objectId)
-        Constants.currentUser = currentUser?.objectId
         if currentUser?.objectId != nil{
-            self.performSegueWithIdentifier("toMain", sender: self)
+            let bool = NSUserDefaults.standardUserDefaults().boolForKey(currentUser!.objectId!)
+            if bool {
+                self.performSegueWithIdentifier("toMain", sender: self)
+            } else {
+                self.performSegueWithIdentifier("toSetProfile", sender: self)
+            }
         } else {
             self.performSegueWithIdentifier("toLogin", sender: self)
         }

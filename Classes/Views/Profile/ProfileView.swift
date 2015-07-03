@@ -38,6 +38,8 @@ class ProfileView: UIViewController {
                 self.portraitView.image = UIImage(data: data!)!
             }
         })
+        self.nameLabel.text = user[Constants.User.Nickname] as? String
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Plain, target: self, action: "logOut:")
         colorConfig()
         addGestures()
     }
@@ -45,11 +47,16 @@ class ProfileView: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-
     }
     
     override func viewDidLayoutSubviews() {
         shapeConfig()
+    }
+    
+    func logOut(sender: AnyObject) {
+        PFUser.logOutInBackgroundWithBlock { (error: NSError?) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func colorConfig() {

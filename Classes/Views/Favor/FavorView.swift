@@ -235,7 +235,6 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     {
         let favorQuery : PFQuery = PFQuery(className: Constants.Favor.Name)
         favorQuery.limit = Constants.Favor.DefaultPaginationLimit
-        favorQuery.includeKey(Constants.Favor.Tag)
         favorQuery.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {

@@ -36,7 +36,6 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
         super.viewDidLoad()  
         self.imagePicker.delegate = self
         self.textField.delegate = self
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "logout", style: .Plain, target: self, action: "logOut:")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadScene", name: Constants.Notification.SetProfileView, object: nil)
         var tap = UITapGestureRecognizer(target: self, action: "tapToSeeOptions")
         self.profileImage.addGestureRecognizer(tap)
@@ -63,12 +62,6 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
 
     }
     
-    func logOut(sender: AnyObject) {
-        PFUser.logOutInBackgroundWithBlock { (error: NSError?) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
     func loadScene(){
         VMGearLoadingView.hideGearLoadingForView(self.view)
         self.textField.text = self.name
@@ -81,13 +74,15 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
     
     @IBAction func done(sender: UIBarButtonItem) {
         if let user = self.user {
+            self.editing = false
+            VMGearLoadingView.showGearLoadingForView(self.view)
             var image : NSData
             if self.profileImage.image != nil {
                 image = NSData(data: UIImagePNGRepresentation(self.profileImage.image!))
             } else {
                 image = NSData(data: UIImagePNGRepresentation(UIImage(named: "default_user_photo")))
             }
-            var fileImage = PFFile(name: "portrait.jpg", data: image)
+            var fileImage = PFFile(name: "portrait.png", data: image)
             fileImage.saveInBackgroundWithBlock { (success : Bool, error : NSError?) -> Void in
                 if success {
                     println("Image success")
@@ -95,10 +90,12 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
                     println("error" )
                 }
             }
+            if email != nil {
+                user[Constants.User.Email] = self.email
+            }
             
             user[Constants.User.Nickname] = textField.text
             user[Constants.User.Portrait] = fileImage
-            user[Constants.User.Email] = self.email
             user[Constants.User.Likes] = 0
             user[Constants.User.Dislikes] = 0
             user[Constants.User.Favors] = 0
@@ -106,11 +103,14 @@ class SetProfileView: UITableViewController, UITableViewDelegate, UIImagePickerC
             user.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println("success")
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: PFUser.currentUser()!.objectId!)
+                    VMGearLoadingView.hideGearLoadingForView(self.view)
+                    self.performSegueWithIdentifier("setProfileToInit", sender: self)
                 }
             })
             user.pinInBackground()
         } else {
-            dismissViewControllerAnimated(true, completion: nil)
+            performSegueWithIdentifier("setProfileToInit", sender: self)
         }
     }
     func getTwitterUserData(){

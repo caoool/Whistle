@@ -105,6 +105,7 @@ class FavorDetailTable: UITableViewController, UIScrollViewDelegate
     func bindData(favor : PFObject)
     //----------------------------------------------------------------------------------------------------------
     {
+        println(favor.objectId)
         var user : PFUser = favor[Constants.Favor.CreatedBy] as! PFUser
         var file = user[Constants.User.Portrait] as! PFFile
         file.getDataInBackgroundWithBlock({ (data, error) -> Void in

@@ -23,7 +23,6 @@ class PhoneLoginView: UIViewController {
     
     required init(coder aDecoder: NSCoder) {
         phoneNumber = ""
-        
         super.init(coder: aDecoder)
     }
     
@@ -54,7 +53,6 @@ class PhoneLoginView: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         textField.becomeFirstResponder()
     }
     
@@ -108,8 +106,7 @@ class PhoneLoginView: UIViewController {
                         self.editing = true
                         return self.step1()
                     }
-                    //return self.dismissViewControllerAnimated(true, completion: nil)
-                    self.performSegueWithIdentifier("toSetProfileFromPhone", sender: self)
+                    self.performSegueWithIdentifier("phoneLoginToSetProfile", sender: self)
                 }
             } else {
                 self.editing = true

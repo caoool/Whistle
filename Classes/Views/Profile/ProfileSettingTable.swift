@@ -24,10 +24,6 @@ class ProfileSettingTable : UITableViewController {
 
     }
     
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func editProfilePhoto() {
         
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
