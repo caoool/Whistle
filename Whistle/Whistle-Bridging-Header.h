@@ -17,11 +17,13 @@
 #import "PulsingHaloLayer.h"
 #import "MultiplePulsingHaloLayer.h"
 
-//model
+//Tab Bar
 #import "YALTabBarItem.h"
 #import "YALFoldingTabBarController.h"
 #import "YALAnimatingTabBarConstants.h"
+#import "YALTabBarInteracting.h"
 
+//Chat
 #import "ChatView.h"
 
 #endif

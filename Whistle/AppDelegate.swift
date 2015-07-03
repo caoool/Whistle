@@ -28,6 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set Status Style
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        
+        // Set global tint color
+        //        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        //        self.window!.tintColor = Constants.Color.GlobalTintColor
+        
+        // set Navigation bar style
+        UINavigationBar.appearance().barTintColor = Constants.Color.NavigationBarColor
+        UINavigationBar.appearance().tintColor = Constants.Color.NavigationBarTextColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : Constants.Color.NavigationBarTextColor]
+        
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()

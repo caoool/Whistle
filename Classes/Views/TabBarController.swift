@@ -12,28 +12,26 @@ class TabBarController : YALFoldingTabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let item1 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "nearby_icon"),
-            leftItemImage: nil,
-            rightItemImage: nil)
-        let item2 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "profile_icon"),
             leftItemImage: UIImage(named: "edit_icon"),
             rightItemImage: nil)
+        let item2 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "nearby_icon"),
+            leftItemImage: UIImage(named: "edit_icon"),
+            rightItemImage: UIImage(named: "edit_icon"))
         self.leftBarItems = [item1, item2]
         let item3 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "chats_icon"),
             leftItemImage: UIImage(named: "search_icon"),
             rightItemImage: UIImage(named: "new_chat_icon"))
-        let item4 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "settings_icon"),
+        let item4 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "profile_icon"),
             leftItemImage: nil,
             rightItemImage: nil)
         self.rightBarItems = [item3, item4]
         self.centerButtonImage = UIImage(named: "plus_icon")
-        self.selectedIndex = 2
+        self.selectedIndex = 1
         
         //customize tabBarView
         self.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight

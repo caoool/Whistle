@@ -25,6 +25,7 @@
 #import "ChatView.h"
 
 #import "YALFoldingTabBarController.h"
+#import "Whistle-Swift.h"
 
 #define HEXCOLOR(c) [UIColor colorWithRed:((c>>24)&0xFF)/255.0 green:((c>>16)&0xFF)/255.0 blue:((c>>8)&0xFF)/255.0 alpha:((c)&0xFF)/255.0]
 
@@ -456,11 +457,8 @@
 		   atIndexPath:(NSIndexPath *)indexPath
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	JSQMessage *message = messages[indexPath.item];
-	if ([self incoming:message])
-	{
-    
-    }
+    [self performSegueWithIdentifier:@"chatToProfile" sender:self];
+	
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -538,5 +536,16 @@
 {
 	return ([message.senderId isEqualToString:self.senderId] == YES);
 }
+     
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+{
+    if ([segue.identifier isEqualToString:@"chatToProfile"]) {
+        //ProfileView *profileView = segue.destinationViewController;
+        
+    }
+}
+
 
 @end

@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileView: UIViewController {
     
     private var o = false
-
     // MARK: - IBOutlets
     
     @IBOutlet weak var infoView: UIView!
@@ -31,10 +31,15 @@ class ProfileView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var user = PFUser.currentUser()!
+        var file = user[Constants.User.Portrait] as! PFFile
+        file.getDataInBackgroundWithBlock({ (data, error) -> Void in
+            if error == nil {
+                self.portraitView.image = UIImage(data: data!)!
+            }
+        })
         colorConfig()
         addGestures()
-        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -44,7 +49,6 @@ class ProfileView: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        
         shapeConfig()
     }
     

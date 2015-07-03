@@ -62,7 +62,6 @@ class RecentView : UITableViewController, UITableViewDataSource, UITableViewDele
         if segue.identifier == "recentToChat" {
             let chatView = segue.destinationViewController as! ChatView
             chatView.initWith("test")
-            
         }
     }
 }
