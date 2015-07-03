@@ -15,14 +15,14 @@ import Parse
 
 //----------------------------------------------------------------------------------------------------------
 class CustomPointAnnotation: MKPointAnnotation
-//----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
 {
     var imageName: String!
 }
 
 //----------------------------------------------------------------------------------------------------------
 class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, YALTabBarInteracting
-//----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
 {
     // MARK: - Favors Data
     //----------------------------------------------------------------------------------------------------------
@@ -37,80 +37,156 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
             }
         }
     }
-
+    
     
     // MARK: - IBOutlets
+    
+    //----------------------------------------------------------------------------------------------------------
+    // Navigation Bar
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var navBarItemLeft                   : UIBarButtonItem!
+    @IBOutlet weak var navBarItemRight                  : UIBarButtonItem!
+    //----------------------------------------------------------------------------------------------------------
+    // Map
     //----------------------------------------------------------------------------------------------------------
     @IBOutlet weak var mapView                          : MKMapView!
-    @IBOutlet weak var detailView                       : UIView!
     @IBOutlet weak var foldUpButton                     : UIButton!
     @IBOutlet weak var foldUpFunctionButton             : UIButton!
-    @IBOutlet weak var foldDownButton                   : UIButton!
-    @IBOutlet weak var foldDownFunctionButton           : UIButton!
     @IBOutlet weak var centerOnUserButton               : UIButton!
     //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var searchButton                     : UIBarButtonItem!
+    // Table
     //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var detailView                       : UIView!
+    @IBOutlet weak var foldDownButton                   : UIButton!
+    @IBOutlet weak var foldDownFunctionButton           : UIButton!
+    //----------------------------------------------------------------------------------------------------------
+    // Portrait
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var portraitView                     : UIView!
+    @IBOutlet weak var portraitImageView                : UIImageView!
+    
+    //----------------------------------------------------------------------------------------------------------
+    // Constraints
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var mapViewHeightConstraint          : NSLayoutConstraint!
+    @IBOutlet weak var mapViewBottomConstraint          : NSLayoutConstraint!
+    @IBOutlet weak var foldUpBottomConstraint           : NSLayoutConstraint!
+    @IBOutlet weak var foldUpBottomNewConstraint        : NSLayoutConstraint!
+    @IBOutlet weak var centerOnUserBottomConstraint     : NSLayoutConstraint!
+    @IBOutlet weak var centerOnUserBottomNewConstraint  : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewTopConstraint        : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewNewTopConstraint     : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewCenterConstraint     : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewOffConstraint        : NSLayoutConstraint!
+    //----------------------------------------------------------------------------------------------------------
+    
     
     // MARK: - Variables
     //----------------------------------------------------------------------------------------------------------
     private var timer                                   : NSTimer?
-    private var interested: Bool                        = false
+    private var interested                              = false
+    
     private var manager                                 : CLLocationManager!
     private var isCenteredOnUserLocation                = false
     private var annotations                             = [CustomPointAnnotation]()
     private var tableView                               : FavorDetailTable?
     //----------------------------------------------------------------------------------------------------------
-    private var displayerMode: Int = 1                  // 0: all map; 1: Splitted; 2: all table
+    private var displayerMode                           : Int = 1   // 0: all map; 1: Splitted; 2: all table
     private var mapViewOriginalFrame                    : CGRect?
     private var detailViewOriginalFrame                 : CGRect?
     private var foldUpButtonOriginalFrame               : CGRect?
     private var foldDownButtonOriginalFrame             : CGRect?
     private var centerOnUserButtonOriginalFrame         : CGRect?
-    private var imageScrollerOriginalFrame              : CGRect?
+    private var portraitViewOriginalFrame               : CGRect?
     //----------------------------------------------------------------------------------------------------------
-    private var isAnimatingBreathing: Bool              = false
+    private var isAnimatingDisplay                      = false
+    private var isAnimatingBreathing                    = false
+    private var didLayoutSubviews                       = false
     //----------------------------------------------------------------------------------------------------------
     
     // MARK: - Initialization
     //----------------------------------------------------------------------------------------------------------
     override func viewDidLoad()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadScene", name: "loadFavors", object: nil)
         loadFavors()
+        
     }
     
     //----------------------------------------------------------------------------------------------------------
     override func viewWillAppear(animated: Bool)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         super.viewWillAppear(true)
-        timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "buttonBreathEffect", userInfo: nil, repeats: true)
-        changeDisplayMode(0)
+        
+        configLooks()
+        if !isAnimatingBreathing {
+            timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "buttonBreathEffect", userInfo: nil, repeats: true)
+        }
+        
+        if didLayoutSubviews {
+            displayerMode                               = 0
+        }
+        
+        self.mapViewHeightConstraint.active             = false
+        self.mapViewBottomConstraint.active             = true
+        self.foldUpBottomConstraint.active              = false
+        self.foldUpBottomNewConstraint.active           = true
+        self.centerOnUserBottomConstraint.active        = false
+        self.centerOnUserBottomNewConstraint.active     = true
+        portraitView.alpha                              = 0
     }
     
     //----------------------------------------------------------------------------------------------------------
     override func viewDidLayoutSubviews()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         configShapes()
-        changeDisplayMode(0)
+        if !didLayoutSubviews {
+            self.mapViewOriginalFrame                       = self.mapView.frame
+            self.foldUpButtonOriginalFrame                  = self.foldUpButton.frame
+            self.centerOnUserButtonOriginalFrame            = self.centerOnUserButton.frame
+            self.detailViewOriginalFrame                    = self.detailView.frame
+            self.foldDownButtonOriginalFrame                = self.foldDownButton.frame
+            self.portraitViewOriginalFrame                  = self.portraitView.frame
+            changeDisplayMode(0)
+            didLayoutSubviews = true
+        }
+        
     }
     
     
     // MARK: - IBActions
     //----------------------------------------------------------------------------------------------------------
-    @IBAction func centerMapOnUserButtonTapped(sender: UIButton)
+    // Navigation Bar
     //----------------------------------------------------------------------------------------------------------
+    @IBAction func navBarItemLeftTapped(sender: UIBarButtonItem)
+        //----------------------------------------------------------------------------------------------------------
+    {
+        performSegueWithIdentifier("FavorView_To_FavorListTable", sender: self)
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    @IBAction func navBarItemRightTapped(sender: UIBarButtonItem)
+        //----------------------------------------------------------------------------------------------------------
+    {
+        performSegueWithIdentifier("FavorView_To_FavorSearchConditionTable", sender: self)
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    // Map
+    //----------------------------------------------------------------------------------------------------------
+    @IBAction func centerMapOnUserButtonTapped(sender: UIButton)
+        //----------------------------------------------------------------------------------------------------------
     {
         centerMapOnUser()
     }
     
     //----------------------------------------------------------------------------------------------------------
     @IBAction func foldUpButtonTapped(sender: UIButton)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         switch displayerMode {
         case 0:
@@ -126,7 +202,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     @IBAction func foldDownButtonTapped(sender: AnyObject)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         switch displayerMode {
         case 0:
@@ -140,38 +216,37 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
         }
     }
     
-    //----------------------------------------------------------------------------------------------------------
-    @IBAction func conditionButtonTapped(sender: UIBarButtonItem)
-    //----------------------------------------------------------------------------------------------------------
-    {
-        
-    }
-    
-    //----------------------------------------------------------------------------------------------------------
-    @IBAction func refreshButtonTapped(sender: UIBarButtonItem)
-    //----------------------------------------------------------------------------------------------------------
-    {
-        
-    }
-
     
     // MARK: - User interactions
     //----------------------------------------------------------------------------------------------------------
-    func addSwipeGesturesToDetailView()
-    //----------------------------------------------------------------------------------------------------------
+    func addGestures()
+        //----------------------------------------------------------------------------------------------------------
     {
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        var swipeRight              = UISwipeGestureRecognizer(target: self, action: "respondToGestures:")
+        swipeRight.direction        = UISwipeGestureRecognizerDirection.Right
         detailView.addGestureRecognizer(swipeRight)
+        portraitImageView.addGestureRecognizer(swipeRight)
         
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        var swipeLeft               = UISwipeGestureRecognizer(target: self, action: "respondToGestures:")
+        swipeLeft.direction         = UISwipeGestureRecognizerDirection.Left
         detailView.addGestureRecognizer(swipeLeft)
+        portraitImageView.addGestureRecognizer(swipeLeft)
+        
+        var swipeUp                 = UISwipeGestureRecognizer(target: self, action: "respondToGestures:")
+        swipeUp.direction           = UISwipeGestureRecognizerDirection.Up
+        portraitImageView.addGestureRecognizer(swipeUp)
+        
+        var swipeDown               = UISwipeGestureRecognizer(target: self, action: "respondToGestures:")
+        swipeDown.direction         = UISwipeGestureRecognizerDirection.Down
+        portraitImageView.addGestureRecognizer(swipeDown)
+        
+        var tap                     = UITapGestureRecognizer(target: self, action: "respondToGestures:")
+        portraitImageView.addGestureRecognizer(tap)
     }
     
     //----------------------------------------------------------------------------------------------------------
-    func respondToSwipeGesture(gesture: UIGestureRecognizer)
-    //----------------------------------------------------------------------------------------------------------
+    func respondToGestures(gesture: UIGestureRecognizer)
+        //----------------------------------------------------------------------------------------------------------
     {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -183,22 +258,29 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
                 index--
                 tableView!.bindData(favors[index] as! PFObject)
                 centerMapOnFavor()
+            case UISwipeGestureRecognizerDirection.Up:
+                displayerMode == 2 ? print() : changeDisplayMode(2)
+            case UISwipeGestureRecognizerDirection.Down:
+                displayerMode == 2 ? changeDisplayMode(1) : changeDisplayMode(0)
             default:
                 break
             }
+        }
+        if let tapGesture = gesture as? UITapGestureRecognizer {
+            
         }
     }
     
     //----------------------------------------------------------------------------------------------------------
     func extraLeftItemDidPressed()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         performSegueWithIdentifier("mainToNew", sender: self)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func extraRightItemDidPressed() {
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
         if !interested {
             interested = !interested
             
@@ -231,7 +313,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     // MARK: - Functions
     //----------------------------------------------------------------------------------------------------------
     func loadFavors()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         let favorQuery : PFQuery = PFQuery(className: Constants.Favor.Name)
         favorQuery.limit = Constants.Favor.DefaultPaginationLimit
@@ -249,116 +331,153 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func loadScene()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        configNavBarButton()
         configMapView()
         configContainerView()
-        configLooks()
-    }
-    
-    //----------------------------------------------------------------------------------------------------------
-    func configNavBarButton()
-    //----------------------------------------------------------------------------------------------------------
-    {
-        var rightSearchBarButtonItem: UIBarButtonItem = searchButton
-        var rightListBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "List", style: UIBarButtonItemStyle.Plain, target: self, action: "searchTapped:")
-        self.navigationItem.setRightBarButtonItems([rightSearchBarButtonItem,rightListBarButtonItem], animated: true)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func searchTapped(sender:UIButton)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         performSegueWithIdentifier("FavorView_To_FavorListTable", sender: self)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configLooks()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-
+        view.backgroundColor                                        = Constants.Color.Background
+        portraitView.backgroundColor                                = UIColor.clearColor()
+        detailView.addTopBorderWithHeight(3, color: Constants.Color.Border)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configShapes()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        
+        portraitImageView.layer.borderColor                         = Constants.Color.Border.CGColor
+        portraitImageView.layer.borderWidth                         = 3
+        portraitImageView.layer.cornerRadius                        = portraitImageView.frame.height/2
     }
     
     //----------------------------------------------------------------------------------------------------------
     func changeDisplayMode(mode: Int)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
+        if isAnimatingDisplay { return }
+        
         var tabBarHeight = YALTabBarViewDefaultHeight
         var naviBarHeight = navigationController?.navigationBar.frame.height
         
         switch displayerMode {
         case 0:
+            self.isAnimatingDisplay                                 = true
             UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.mapViewBottomConstraint.active                 = false
                 self.mapView.frame                                  = self.mapViewOriginalFrame!
+                self.mapViewHeightConstraint.active                 = true
+                
+                self.foldUpBottomNewConstraint.active               = false
                 self.foldUpButton.frame                             = self.foldUpButtonOriginalFrame!
                 self.foldUpFunctionButton.frame                     = self.foldUpButtonOriginalFrame!
+                self.foldUpBottomConstraint.active                  = true
+                
+                self.centerOnUserBottomNewConstraint.active         = false
                 self.centerOnUserButton.frame                       = self.centerOnUserButtonOriginalFrame!
+                self.centerOnUserBottomConstraint.active            = true
+                
+                self.portraitViewOffConstraint.active               = false
+                self.portraitView.alpha                             = 1
+                self.portraitView.frame.origin.x                    = self.view.frame.origin.x
+                self.portraitViewCenterConstraint.active            = true
+                
                 self.detailView.alpha                               = 1
-                self.foldDownButton.hidden                          = false
-                self.foldDownFunctionButton.hidden                  = false
+                self.foldDownButton.hidden                          = true
+                self.foldDownFunctionButton.hidden                  = true
+                self.foldUpButton.hidden                            = true
+                self.foldUpFunctionButton.hidden                    = true
+                
+                
                 }, completion: {
                     (finished: Bool) -> Void in
                     self.displayerMode                              = 1
+                    self.isAnimatingDisplay                         = false
+                    self.tableView?.setTopMargin1()
+                    self.tableView?.scrollToTop()
             })
         case 1:
+            self.isAnimatingDisplay                                 = true
             if mode == 0 {
                 UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                    self.mapViewOriginalFrame                       = self.mapView.frame
-                    self.foldUpButtonOriginalFrame                  = self.foldUpButton.frame
-                    self.centerOnUserButtonOriginalFrame            = self.centerOnUserButton.frame
+                    self.mapViewHeightConstraint.active             = false
+                    self.mapView.frame                              = CGRectMake(0, naviBarHeight!, self.view.frame.width, self.view.frame.height - naviBarHeight!)
+                    self.mapViewBottomConstraint.active             = true
+                    
+                    self.foldUpBottomConstraint.active              = false
+                    self.foldUpBottomNewConstraint.active           = true
+                    
+                    self.centerOnUserBottomConstraint.active        = false
+                    self.centerOnUserBottomNewConstraint.active     = true
+                    
+                    self.portraitViewCenterConstraint.active        = false
+                    self.portraitView.alpha                         = 0
+                    self.portraitView.frame                         = self.portraitViewOriginalFrame!
+                    self.portraitViewOffConstraint.active           = true
+                    
                     self.detailView.alpha                           = 0
                     self.foldUpButton.hidden                        = false
                     self.foldUpFunctionButton.hidden                = false
                     self.foldDownButton.hidden                      = true
                     self.foldDownFunctionButton.hidden              = true
-                    self.mapView.frame                              = self.view.frame
-                    self.foldUpButton.layer.frame.origin.y          = self.view.frame.origin.y + self.view.frame.size.height - tabBarHeight - 30
-                    self.foldUpFunctionButton.layer.frame.origin.y  = self.view.frame.origin.y + self.view.frame.size.height - tabBarHeight - 30
-                    self.centerOnUserButton.layer.frame.origin.y    = self.view.frame.origin.y + self.view.frame.size.height - tabBarHeight - 30
                     }, completion: {
                         (finished: Bool) -> Void in
                         self.displayerMode = 0
+                        self.isAnimatingDisplay                     = false
                 })
             }
             if mode == 2 {
                 UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                    self.detailViewOriginalFrame                    = self.detailView.frame
-                    self.foldDownButtonOriginalFrame                = self.foldDownButton.frame
                     self.detailView.alpha                           = 1
                     self.foldUpButton.hidden                        = true
                     self.foldUpFunctionButton.hidden                = true
-                    self.foldDownButton.hidden                      = false
-                    self.foldDownFunctionButton.hidden              = false
-                    self.detailView.frame                           = CGRectMake(0, naviBarHeight!, self.view.frame.width, self.view.frame.height - naviBarHeight!)
+                    self.foldDownButton.hidden                      = true
+                    self.foldDownFunctionButton.hidden              = true
                     self.foldDownButton.layer.frame.origin.y        = self.view.frame.origin.y + naviBarHeight! + 30
                     self.foldDownFunctionButton.layer.frame.origin.y = self.view.frame.origin.y + naviBarHeight! + 30
+                    //                    self.portraitViewTopConstraint.active           = false
+                    self.portraitView.layer.frame.origin.y          = self.view.layer.frame.origin.y + naviBarHeight! + 30
+                    self.detailView.frame                           = CGRectMake(0, naviBarHeight!, self.view.frame.width, self.view.frame.height - naviBarHeight!)
+                    //                    self.portraitViewNewTopConstraint.active        = true
                     }, completion: {
                         (finished: Bool) -> Void in
                         self.displayerMode                          = 2
+                        self.isAnimatingDisplay                     = false
+                        self.tableView?.setTopMargin2()
+                        self.tableView?.scrollToTop()
                 })
             }
         case 2:
+            self.isAnimatingDisplay                                 = true
             UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.portraitView.frame                             = self.portraitViewOriginalFrame!
+                self.portraitView.frame.origin.x                    = self.view.frame.origin.x
+                
                 self.detailView.frame                               = self.detailViewOriginalFrame!
                 self.foldDownButton.frame                           = self.foldDownButtonOriginalFrame!
                 self.foldDownFunctionButton.frame                   = self.foldDownButtonOriginalFrame!
-                self.foldUpButton.hidden                            = false
-                self.foldUpFunctionButton.hidden                    = false
-                self.foldDownButton.hidden                          = false
-                self.foldDownFunctionButton.hidden                  = false
+                self.foldUpButton.hidden                            = true
+                self.foldUpFunctionButton.hidden                    = true
+                self.foldDownButton.hidden                          = true
+                self.foldDownFunctionButton.hidden                  = true
+                self.tableView?.setTopMargin1()
                 }, completion: {
                     (finished: Bool) -> Void in
                     self.displayerMode                              = 1
+                    self.isAnimatingDisplay                         = false
             })
-
+            
         default:
             return
         }
@@ -366,7 +485,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func buttonBreathEffect() {
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
         isAnimatingBreathing = true
         UIView.animateWithDuration(1, delay: 0.4, options: .CurveEaseOut, animations: {
             if self.foldUpButton.alpha == 1 {
@@ -387,7 +506,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     // MapView
     //----------------------------------------------------------------------------------------------------------
     func configMapView()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         mapView.delegate                                            = self
         manager                                                     = CLLocationManager()
@@ -404,7 +523,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func centerMapOnUser()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         let latitude                                                = manager.location.coordinate.latitude
         let longitude                                               = manager.location.coordinate.longitude
@@ -416,7 +535,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func centerMapOnFavor()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         let location: CLLocationCoordinate2D                        = annotations[index].coordinate
         let regionRadius: CLLocationDistance                        = 100
@@ -426,7 +545,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func addAnnotations()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         for favor in favors {
             let PFLocation = favor[Constants.Favor.Location] as! PFGeoPoint
@@ -453,42 +572,26 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     // TableView
     //----------------------------------------------------------------------------------------------------------
     func configContainerView()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         detailView.userInteractionEnabled = true
-        addSwipeGesturesToDetailView()
+        addGestures()
         
         tableView = childViewControllers.last as? FavorDetailTable
         tableView?.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         
-        var tapGesture = UITapGestureRecognizer(target: self, action: "fullScreenImageScroller")
-        tableView!.imageScrollView.addGestureRecognizer(tapGesture)
         tableView!.bindData(favors[index] as! PFObject)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func fullScreenImageScroller()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        var imageView                                   = UIImageView(frame: tableView!.imageScrollView.layer.frame)
-        imageView.image                                 = tableView?.images[tableView!.pageControl.currentPage]
-        imageView.alpha = 0
-        imageView.userInteractionEnabled = true
-        view.addSubview(imageView)
-        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            imageView.alpha = 1
-            imageView.frame = self.view.frame
-            }, completion: {
-                (finished: Bool) -> Void in
-        })
-    
-        var tapGesture                                  = UITapGestureRecognizer(target: self, action: "dismissFullScreenImageScroller:")
-        imageView.addGestureRecognizer(tapGesture)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func dismissFullScreenImageScroller(sender: UITapGestureRecognizer)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             sender.view?.alpha = 0
@@ -502,7 +605,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     // MARK: - Delegates
     //----------------------------------------------------------------------------------------------------------
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         if !isCenteredOnUserLocation
         {
@@ -513,7 +616,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         if !(annotation is CustomPointAnnotation) {
             return nil

@@ -13,37 +13,71 @@ import Parse
 
 
 //----------------------------------------------------------------------------------------------------------
-class FavorDetailTable: UITableViewController, UIScrollViewDelegate
-//----------------------------------------------------------------------------------------------------------
+class FavorDetailTable: UITableViewController
+    //----------------------------------------------------------------------------------------------------------
 {
     // MARK: - IBOutlets
+    
     //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var portraitView                                 : UIImageView!
-    @IBOutlet weak var nameLabel                                    : UILabel!
-    @IBOutlet weak var addressLabel                                 : UILabel!
-    @IBOutlet weak var favorLabel                                   : UILabel!
-    @IBOutlet weak var rewardLabel                                  : UILabel!
+    // Price
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var priceIcon                                    : UIImageView!
+    @IBOutlet weak var priceLine                                    : UIView!
+    @IBOutlet weak var dollarLabel                                  : UILabel!
     @IBOutlet weak var priceLabel                                   : UILabel!
-    @IBOutlet weak var audioView                                    : UIView!
-    @IBOutlet weak var imageScrollView                              : UIScrollView!
-    @IBOutlet weak var pageControl                                  : UIPageControl!
-    //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var profileCell                                  : UITableViewCell!
-    //----------------------------------------------------------------------------------------------------------
     @IBOutlet weak var plus1Button                                  : UIButton!
     @IBOutlet weak var plus5Button                                  : UIButton!
     @IBOutlet weak var plus10Button                                 : UIButton!
     @IBOutlet weak var clearButton                                  : UIButton!
     //----------------------------------------------------------------------------------------------------------
+    // Rewards
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var rewardIcon                                   : UIImageView!
+    @IBOutlet weak var rewardLine                                   : UIView!
+    @IBOutlet weak var rewardLabel                                  : UILabel!
+    //----------------------------------------------------------------------------------------------------------
+    // Favor
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var favorIcon                                    : UIImageView!
+    @IBOutlet weak var favorLine                                    : UIView!
+    @IBOutlet weak var favorLabel                                   : UILabel!
+    //----------------------------------------------------------------------------------------------------------
+    // Address
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var addressIcon                                  : UIImageView!
+    @IBOutlet weak var addressLine                                  : UIView!
+    @IBOutlet weak var addressLabel                                 : UILabel!
+    //----------------------------------------------------------------------------------------------------------
+    // Images
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var imagesIcon                                   : UIImageView!
+    @IBOutlet weak var imagesLine                                   : UIView!
+    @IBOutlet weak var image0                                       : UIImageView!
+    @IBOutlet weak var image1                                       : UIImageView!
+    @IBOutlet weak var image2                                       : UIImageView!
+    //----------------------------------------------------------------------------------------------------------
+    
+    
     
     
     // MARK: - Variables
+    
     //----------------------------------------------------------------------------------------------------------
-    var favor : PFObject!
-    private var didLayoutSubviews                                   = false
-    var defaultPrice: String?
+    // Parse
+    //----------------------------------------------------------------------------------------------------------
+    var favor                                                       : PFObject!
+    //----------------------------------------------------------------------------------------------------------
+    // Defaults
+    //----------------------------------------------------------------------------------------------------------
+    var defaultPrice                                                : String?
+    //----------------------------------------------------------------------------------------------------------
+    // Audio
+    //----------------------------------------------------------------------------------------------------------
     var audioAsset                                                  = AVURLAsset()
     var playerView                                                  = SYWaveformPlayerView()
+    //----------------------------------------------------------------------------------------------------------
+    // Images
+    //----------------------------------------------------------------------------------------------------------
     var images                                                      = [UIImage]()
     var imageViews                                                  = [UIImageView]()
     //----------------------------------------------------------------------------------------------------------
@@ -52,28 +86,27 @@ class FavorDetailTable: UITableViewController, UIScrollViewDelegate
     // MARK: - Initializations
     //----------------------------------------------------------------------------------------------------------
     override func viewDidLoad()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         super.viewDidLoad()
         
         configDefaults()
-        configAudio()
-        configAudioView()
-        //configImages()
-        //configImageView()
+        //        configAudio()
+        //        configAudioView()
     }
     
     //----------------------------------------------------------------------------------------------------------
     override func viewDidAppear(animated: Bool)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         super.viewDidAppear(true)
         tableView.reloadData()
+        scrollToTop()
     }
     
     //----------------------------------------------------------------------------------------------------------
     override func viewDidLayoutSubviews()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         configLooks()
         configShape()
@@ -83,8 +116,11 @@ class FavorDetailTable: UITableViewController, UIScrollViewDelegate
     // MARK: - IBActions
     //----------------------------------------------------------------------------------------------------------
     @IBAction func modifyPrice(sender: UIButton)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
+        tableView.bringSubviewToFront(sender)
+        bounceView(sender)
+        bounceView(priceLabel)
         switch sender.titleLabel!.text! {
         case "C":
             priceLabel.text = defaultPrice
@@ -103,18 +139,10 @@ class FavorDetailTable: UITableViewController, UIScrollViewDelegate
     // MARK: - Functionalities
     //----------------------------------------------------------------------------------------------------------
     func bindData(favor : PFObject)
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        println(favor.objectId)
         var user : PFUser = favor[Constants.Favor.CreatedBy] as! PFUser
         var file = user[Constants.User.Portrait] as! PFFile
-        file.getDataInBackgroundWithBlock({ (data, error) -> Void in
-            if error == nil {
-                self.portraitView.image = UIImage(data: data!)!
-            }
-        })
-    
-        self.nameLabel.text = user[Constants.User.Nickname] as? String
         self.favorLabel.text = favor[Constants.Favor.Content] as? String
         self.rewardLabel.text = favor[Constants.Favor.Reward] as? String
         let images = favor[Constants.Favor.Image] as? NSArray
@@ -125,7 +153,7 @@ class FavorDetailTable: UITableViewController, UIScrollViewDelegate
                         let imagee = UIImage(data: data!)
                         self.images.append(imagee!)
                         if self.images.count == images!.count {
-                            self.configImageView()
+                            
                         }
                     }
                 })
@@ -134,71 +162,111 @@ class FavorDetailTable: UITableViewController, UIScrollViewDelegate
     }
     
     //----------------------------------------------------------------------------------------------------------
-    func configLooks() {
-        tableView.backgroundColor = Constants.Color.TableBackgroundColor
+    func configLooks()
+        //----------------------------------------------------------------------------------------------------------
+    {
+        tableView.backgroundColor                                   = Constants.Color.Background
+        
+        var shadowOffset                                            = CGSizeMake(0, -1)
+        var labelList                                               = [dollarLabel, priceLabel, rewardLabel, favorLabel, addressLabel]
+        for element in labelList {
+            element.textColor                                       = Constants.Color.CellText
+            element.shadowColor                                     = Constants.Color.CellTextShadow
+            element.shadowOffset                                    = CGSizeMake(0, -1)
+        }
     }
-
+    
     //----------------------------------------------------------------------------------------------------------
     func configDefaults()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        defaultPrice =  priceLabel.text
+        defaultPrice                                                = priceLabel.text
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configShape()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        portraitView.image                                          = portraitView.image?.rounded
-        portraitView.layer.borderColor                              = UIColor.whiteColor().CGColor
-        portraitView.layer.borderWidth                              = 1
-        portraitView.layer.cornerRadius                             = portraitView.layer.frame.height/2
-
-        plus1Button.layer.borderColor                               = UIColor.lightGrayColor().CGColor
-        plus1Button.layer.borderWidth                               = 0.3
-        plus1Button.layer.cornerRadius                              = plus1Button.layer.frame.height/2
+        var buttonList = [plus1Button, plus5Button, plus10Button, clearButton]
+        for element in buttonList {
+            element.layer.borderColor                               = Constants.Color.Border.CGColor
+            element.layer.borderWidth                               = 0.3
+            element.layer.cornerRadius                              = element.layer.frame.height/2
+            element.setTitleColor(Constants.Color.CellText, forState: .Normal)
+        }
         
-        plus5Button.layer.borderColor                               = UIColor.lightGrayColor().CGColor
-        plus5Button.layer.borderWidth                               = 0.3
-        plus5Button.layer.cornerRadius                              = plus5Button.layer.frame.height/2
+        var iconList = [priceIcon, rewardIcon, favorIcon, addressIcon, imagesIcon]
+        for element in iconList {
+            tableView.bringSubviewToFront(element)
+            element.layer.borderColor                               = Constants.Color.Border.CGColor
+            element.layer.borderWidth                               = 2
+            element.layer.cornerRadius                              = element.layer.frame.height/2
+        }
         
-        plus10Button.layer.borderColor                              = UIColor.lightGrayColor().CGColor
-        plus10Button.layer.borderWidth                              = 0.3
-        plus10Button.layer.cornerRadius                             = plus10Button.layer.frame.height/2
-        
-        clearButton.layer.borderColor                               = UIColor.lightGrayColor().CGColor
-        clearButton.layer.borderWidth                               = 0.3
-        clearButton.layer.cornerRadius                              = clearButton.layer.frame.height/2
+        var lineList = [priceLine, rewardLine, favorLine, addressLine, imagesLine]
+        for element in lineList {
+            element.backgroundColor                                 = Constants.Color.Border
+        }
         
         reshapeImageView()
         reshapeAudioView()
     }
     
     //----------------------------------------------------------------------------------------------------------
-    func configAudio()
+    // Called when in display mode 2
     //----------------------------------------------------------------------------------------------------------
+    func setTopMargin2()
+        //----------------------------------------------------------------------------------------------------------
+    {
+        tableView.contentInset                                      = UIEdgeInsetsMake(170, 0, YALTabBarViewDefaultHeight + 30, 0)
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    // Called when in display mode 1
+    //----------------------------------------------------------------------------------------------------------
+    func setTopMargin1()
+        //----------------------------------------------------------------------------------------------------------
+    {
+        tableView.contentInset                                      = UIEdgeInsetsMake(100, 0, YALTabBarViewDefaultHeight + 30, 0)
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    func scrollToTop()
+        //----------------------------------------------------------------------------------------------------------
+    {
+        tableView.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: true)
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    // START: - Audio
+    //----------------------------------------------------------------------------------------------------------
+    func configAudio()
+        //----------------------------------------------------------------------------------------------------------
     {
         audioAsset = AVURLAsset(URL: NSBundle.mainBundle().URLForResource("test audio", withExtension: "mp3"), options: nil)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configAudioView()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        playerView = SYWaveformPlayerView(frame: audioView.frame, asset: audioAsset, color: Constants.Color.AudioViewColor, progressColor: Constants.Color.AudioViewProgressColor)
-        audioView.addSubview(playerView)
+        //        playerView = SYWaveformPlayerView(frame: audioView.frame, asset: audioAsset, color: Constants.Color.AudioViewColor, progressColor: Constants.Color.AudioViewProgressColor)
+        //        audioView.addSubview(playerView)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func reshapeAudioView()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        playerView.frame = audioView.frame
+        //        playerView.frame = audioView.frame
     }
+    //----------------------------------------------------------------------------------------------------------
+    // END: - Audio
+    //----------------------------------------------------------------------------------------------------------
     
     //----------------------------------------------------------------------------------------------------------
     func configImages()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         images.append(UIImage(named: "Portrait_Test")!)
         images.append(UIImage(named: "finished_indicator_favor")!)
@@ -207,95 +275,72 @@ class FavorDetailTable: UITableViewController, UIScrollViewDelegate
     
     //----------------------------------------------------------------------------------------------------------
     func configImageView()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        let scrollViewWidth: CGFloat = imageScrollView.frame.width
-        let scrollViewHeight: CGFloat = imageScrollView.frame.height
-        
-        for (index, element) in enumerate(images) {
-            var imageView = UIImageView(image: element)
-            imageView.frame = CGRectMake(scrollViewWidth*CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
-            imageView.userInteractionEnabled = true
-            imageViews.append(imageView)
-            imageScrollView.addSubview(imageView)
-        }
-        
-        imageScrollView.contentSize = CGSizeMake(scrollViewWidth * CGFloat(images.count), scrollViewHeight)
-        imageScrollView.delegate = self
-        pageControl.numberOfPages = images.count
-        pageControl.currentPage = 0
+        //        let scrollViewWidth: CGFloat = imageScrollView.frame.width
+        //        let scrollViewHeight: CGFloat = imageScrollView.frame.height
+        //
+        //        for (index, element) in enumerate(images) {
+        //            var imageView = UIImageView(image: element)
+        //            imageView.frame = CGRectMake(scrollViewWidth*CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
+        //            imageView.userInteractionEnabled = true
+        //            imageViews.append(imageView)
+        //            imageScrollView.addSubview(imageView)
+        //        }
+        //
+        //        imageScrollView.contentSize = CGSizeMake(scrollViewWidth * CGFloat(images.count), scrollViewHeight)
+        //        imageScrollView.delegate = self
+        //        pageControl.numberOfPages = images.count
+        //        pageControl.currentPage = 0
     }
     
     //----------------------------------------------------------------------------------------------------------
     func reshapeImageView()
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
-        let scrollViewWidth: CGFloat = imageScrollView.frame.width
-        let scrollViewHeight: CGFloat = imageScrollView.frame.height
-        
-        for (index, element) in enumerate(imageViews) {
-            element.frame = CGRectMake(scrollViewWidth*CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
-        }
-        
-        imageScrollView.contentSize = CGSizeMake(scrollViewWidth * CGFloat(images.count), scrollViewHeight)
+        //        let scrollViewWidth: CGFloat = imageScrollView.frame.width
+        //        let scrollViewHeight: CGFloat = imageScrollView.frame.height
+        //
+        //        for (index, element) in enumerate(imageViews) {
+        //            element.frame = CGRectMake(scrollViewWidth*CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
+        //        }
+        //
+        //        imageScrollView.contentSize = CGSizeMake(scrollViewWidth * CGFloat(images.count), scrollViewHeight)
     }
     
     
     // MARK: - Delegations
     //----------------------------------------------------------------------------------------------------------
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    //----------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------
     {
         switch indexPath.section {
-        case 0:
-            return 120
-        case 1:
-            return calculateHeightForString(addressLabel.text!) + 50
-        case 2:
-            return calculateHeightForString(favorLabel.text!) + 50
-        case 3:
-            return calculateHeightForString(rewardLabel.text!) + 50
-        case 4:
-            return 60
-        case 5:
-            if indexPath.row == 1 {
-                return 250
-            } else {
-                return 44
-            }
+        case 0:                                                     // Price
+            return 85
+        case 1:                                                     // Reward
+            return calculateHeightForString(rewardLabel.text!) + 100
+        case 2:                                                     // Favor
+            return calculateHeightForString(favorLabel.text!) + 100
+        case 3:                                                     // Address
+            return calculateHeightForString(addressLabel.text!) + 100
+        case 4:                                                     // Images
+            return 30 + image0.frame.height
         default:
             return 44
         }
     }
     
     //----------------------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    // Modify cell height and background color
     //----------------------------------------------------------------------------------------------------------
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+        //----------------------------------------------------------------------------------------------------------
     {
-        var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        cell.backgroundColor = Constants.Color.CellBackgroundColor
-        if indexPath.section != 0 {
-            if indexPath.row == 0 {
-                cell.addTopBorderWithHeight(0.5, color: Constants.Color.GlobalTintColor)
-            }
-        }
+        var cell                        = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        cell.backgroundColor            = Constants.Color.Background
         return cell
     }
     
-    //----------------------------------------------------------------------------------------------------------
-    override func scrollViewDidEndDecelerating(scrollView: UIScrollView)
-    //----------------------------------------------------------------------------------------------------------
-    {
-        // Test the offset and calculate the current page after scrolling ends
-        var pageWidth: CGFloat = CGRectGetWidth(scrollView.frame)
-        var currentPage: CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
-        // Change the indicator
-        pageControl.currentPage = Int(currentPage)
-        
-        // center on content
-        var newContentOffsetX = (CGFloat(pageControl.currentPage)) * scrollView.frame.width
-        imageScrollView.contentOffset = CGPointMake(newContentOffsetX, 0)
-    }
     
 }
 

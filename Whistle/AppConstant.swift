@@ -11,9 +11,10 @@ import Foundation
 
 //----------------------------------------------------------------------------------------------------------
 struct Constants {
-//----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     
     //------------------------------------------------------------------------------------------------------
+    static var currentUser                      : String? = nil
     static let DefaultFont                      : String  = "Helvetica"
     //------------------------------------------------------------------------------------------------------
     
@@ -65,18 +66,38 @@ struct Constants {
     //------------------------------------------------------------------------------------------------------
     
     //------------------------------------------------------------------------------------------------------
-    struct Color {
+    struct Color
+        //------------------------------------------------------------------------------------------------------
+    {
+        //--------------------------------------------------------------------------------------------------
+        // Global
+        //--------------------------------------------------------------------------------------------------
+        static let Main                         : UIColor = UIColor(red:0.17, green:0.19, blue:0.25, alpha:1)
+        static let Background                   : UIColor = UIColor(red:0.21, green:0.25, blue:0.31, alpha:1)
+        static let Shadow                       : UIColor = UIColor.darkGrayColor()
+        static let TextLight                    : UIColor = UIColor(red:0.96, green:0.92, blue:0.84, alpha:1)
+        static let Border                       : UIColor = UIColor(red:0.96, green:0.92, blue:0.84, alpha:1)
+        //--------------------------------------------------------------------------------------------------
+        // Navigation Bar
+        //--------------------------------------------------------------------------------------------------
+        static let NavigationBar                : UIColor = Constants.Color.Main
+        static let NavigationBarTint            : UIColor = UIColor.whiteColor()
+        //--------------------------------------------------------------------------------------------------
+        // Table
+        //--------------------------------------------------------------------------------------------------
+        static let TableBackground              : UIColor = Constants.Color.Background
+        static let CellBackground               : UIColor = Constants.Color.Background
+        static let CellText                     : UIColor = Constants.Color.TextLight
+        static let CellTextShadow               : UIColor = Constants.Color.Shadow
+        //--------------------------------------------------------------------------------------------------
+        
         static let Test                         : UIColor = UIColor.brownColor()
-        static let TextLight                    : UIColor = UIColor.whiteColor()
         static let TextDark                     : UIColor = UIColor.darkTextColor()
         static let TextDark2                    : UIColor = UIColor.darkGrayColor()
         static let AudioViewColor               : UIColor = UIColor.blackColor()
         static let AudioViewProgressColor       : UIColor = UIColor.grayColor()
         static let IsAvailableHaloColor         : UIColor = UIColor.blueColor()
         static let NotAvailableHaloColor        : UIColor = UIColor.grayColor()
-        static let NavigationBarColor           : UIColor = UIColorFromHex(0x48D3B2, alpha: 1)
-        static let NavigationBarTextColor       : UIColor = UIColorFromHex(0xFFFFFF, alpha: 1)
-        static let GlobalTintColor              : UIColor = UIColorFromHex(0x48D3B2, alpha: 1)
         static let TableBackgroundColor         : UIColor = UIColorFromHex(0xFFFFFF, alpha: 1)
         static let CellBackgroundColor          : UIColor = UIColorFromHex(0xFFFFFF, alpha: 1)
     }
