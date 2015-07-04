@@ -55,9 +55,13 @@ class FavorDetailTable: UITableViewController
     @IBOutlet weak var image0                                       : UIImageView!
     @IBOutlet weak var image1                                       : UIImageView!
     @IBOutlet weak var image2                                       : UIImageView!
+    @IBOutlet weak var image3                                       : UIImageView!
+    @IBOutlet weak var image4                                       : UIImageView!
+    @IBOutlet weak var image5                                       : UIImageView!
+    @IBOutlet weak var image6                                       : UIImageView!
+    @IBOutlet weak var image7                                       : UIImageView!
+    @IBOutlet weak var image8                                       : UIImageView!
     //----------------------------------------------------------------------------------------------------------
-    
-    
     
     
     // MARK: - Variables
@@ -80,33 +84,34 @@ class FavorDetailTable: UITableViewController
     //----------------------------------------------------------------------------------------------------------
     var images                                                      = [UIImage]()
     var imageViews                                                  = [UIImageView]()
+    var imageViewHeight                                             : CGFloat = 85
     //----------------------------------------------------------------------------------------------------------
     
     
     // MARK: - Initializations
     //----------------------------------------------------------------------------------------------------------
     override func viewDidLoad()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         super.viewDidLoad()
         
         configDefaults()
-        //        configAudio()
-        //        configAudioView()
+        configImages()
+        configImageViews()
+        addGestures()
     }
     
     //----------------------------------------------------------------------------------------------------------
     override func viewDidAppear(animated: Bool)
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         super.viewDidAppear(true)
         tableView.reloadData()
-        scrollToTop()
     }
     
     //----------------------------------------------------------------------------------------------------------
     override func viewDidLayoutSubviews()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         configLooks()
         configShape()
@@ -116,7 +121,7 @@ class FavorDetailTable: UITableViewController
     // MARK: - IBActions
     //----------------------------------------------------------------------------------------------------------
     @IBAction func modifyPrice(sender: UIButton)
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         tableView.bringSubviewToFront(sender)
         bounceView(sender)
@@ -136,10 +141,35 @@ class FavorDetailTable: UITableViewController
     }
     
     
+    // MARK: - User Interactions
+    //----------------------------------------------------------------------------------------------------------
+    func addGestures()
+    //----------------------------------------------------------------------------------------------------------
+    {
+        for element in imageViews {
+            var tap = UITapGestureRecognizer(target: self, action: "respondToTapGesture:")
+            element.addGestureRecognizer(tap)
+        }
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    func respondToTapGesture(sender: UITapGestureRecognizer)
+    //----------------------------------------------------------------------------------------------------------
+    {
+        var imageInfo = JTSImageInfo()
+        imageInfo.image = image0.image!
+        imageInfo.referenceRect = view.frame
+        imageInfo.referenceView = view
+        var imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
+        imageViewer.showFromViewController(self.parentViewController, transition: JTSImageViewControllerTransition._FromOriginalPosition)
+        
+    }
+    
+    
     // MARK: - Functionalities
     //----------------------------------------------------------------------------------------------------------
     func bindData(favor : PFObject)
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         var user : PFUser = favor[Constants.Favor.CreatedBy] as! PFUser
         var file = user[Constants.User.Portrait] as! PFFile
@@ -163,7 +193,7 @@ class FavorDetailTable: UITableViewController
     
     //----------------------------------------------------------------------------------------------------------
     func configLooks()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         tableView.backgroundColor                                   = Constants.Color.Background
         
@@ -178,14 +208,14 @@ class FavorDetailTable: UITableViewController
     
     //----------------------------------------------------------------------------------------------------------
     func configDefaults()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         defaultPrice                                                = priceLabel.text
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configShape()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         var buttonList = [plus1Button, plus5Button, plus10Button, clearButton]
         for element in buttonList {
@@ -208,7 +238,6 @@ class FavorDetailTable: UITableViewController
             element.backgroundColor                                 = Constants.Color.Border
         }
         
-        reshapeImageView()
         reshapeAudioView()
     }
     
@@ -216,7 +245,7 @@ class FavorDetailTable: UITableViewController
     // Called when in display mode 2
     //----------------------------------------------------------------------------------------------------------
     func setTopMargin2()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         tableView.contentInset                                      = UIEdgeInsetsMake(170, 0, YALTabBarViewDefaultHeight + 30, 0)
     }
@@ -225,14 +254,14 @@ class FavorDetailTable: UITableViewController
     // Called when in display mode 1
     //----------------------------------------------------------------------------------------------------------
     func setTopMargin1()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         tableView.contentInset                                      = UIEdgeInsetsMake(100, 0, YALTabBarViewDefaultHeight + 30, 0)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func scrollToTop()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         tableView.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: true)
     }
@@ -241,14 +270,14 @@ class FavorDetailTable: UITableViewController
     // START: - Audio
     //----------------------------------------------------------------------------------------------------------
     func configAudio()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         audioAsset = AVURLAsset(URL: NSBundle.mainBundle().URLForResource("test audio", withExtension: "mp3"), options: nil)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configAudioView()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         //        playerView = SYWaveformPlayerView(frame: audioView.frame, asset: audioAsset, color: Constants.Color.AudioViewColor, progressColor: Constants.Color.AudioViewProgressColor)
         //        audioView.addSubview(playerView)
@@ -256,7 +285,7 @@ class FavorDetailTable: UITableViewController
     
     //----------------------------------------------------------------------------------------------------------
     func reshapeAudioView()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         //        playerView.frame = audioView.frame
     }
@@ -265,54 +294,44 @@ class FavorDetailTable: UITableViewController
     //----------------------------------------------------------------------------------------------------------
     
     //----------------------------------------------------------------------------------------------------------
+    // START: - Images
+    //----------------------------------------------------------------------------------------------------------
     func configImages()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         images.append(UIImage(named: "Portrait_Test")!)
         images.append(UIImage(named: "finished_indicator_favor")!)
         images.append(UIImage(named: "Portrait_Test")!)
+        images.append(UIImage(named: "Jaychou_fantasy")!)
+        images.append(UIImage(named: "finished_indicator_favor")!)
+        images.append(UIImage(named: "Portrait_Test")!)
+        images.append(UIImage(named: "Portrait_Test")!)
+//        images.append(UIImage(named: "finished_indicator_favor")!)
+//        images.append(UIImage(named: "Portrait_Test")!)
     }
     
     //----------------------------------------------------------------------------------------------------------
-    func configImageView()
-        //----------------------------------------------------------------------------------------------------------
-    {
-        //        let scrollViewWidth: CGFloat = imageScrollView.frame.width
-        //        let scrollViewHeight: CGFloat = imageScrollView.frame.height
-        //
-        //        for (index, element) in enumerate(images) {
-        //            var imageView = UIImageView(image: element)
-        //            imageView.frame = CGRectMake(scrollViewWidth*CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
-        //            imageView.userInteractionEnabled = true
-        //            imageViews.append(imageView)
-        //            imageScrollView.addSubview(imageView)
-        //        }
-        //
-        //        imageScrollView.contentSize = CGSizeMake(scrollViewWidth * CGFloat(images.count), scrollViewHeight)
-        //        imageScrollView.delegate = self
-        //        pageControl.numberOfPages = images.count
-        //        pageControl.currentPage = 0
-    }
-    
+    func configImageViews()
     //----------------------------------------------------------------------------------------------------------
-    func reshapeImageView()
-        //----------------------------------------------------------------------------------------------------------
     {
-        //        let scrollViewWidth: CGFloat = imageScrollView.frame.width
-        //        let scrollViewHeight: CGFloat = imageScrollView.frame.height
-        //
-        //        for (index, element) in enumerate(imageViews) {
-        //            element.frame = CGRectMake(scrollViewWidth*CGFloat(index), 0, scrollViewWidth, scrollViewHeight)
-        //        }
-        //
-        //        imageScrollView.contentSize = CGSizeMake(scrollViewWidth * CGFloat(images.count), scrollViewHeight)
+        imageViews = [image0, image1, image2, image3, image4, image5, image6, image7, image8]
+        for (index, element) in enumerate(imageViews) {
+            if index <= images.count-1 {
+                element.image = images[index]
+            } else {
+                element.hidden = true
+            }
+        }
     }
+    //----------------------------------------------------------------------------------------------------------
+    // END: - Images
+    //----------------------------------------------------------------------------------------------------------
     
     
     // MARK: - Delegations
     //----------------------------------------------------------------------------------------------------------
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         switch indexPath.section {
         case 0:                                                     // Price
@@ -324,7 +343,22 @@ class FavorDetailTable: UITableViewController
         case 3:                                                     // Address
             return calculateHeightForString(addressLabel.text!) + 100
         case 4:                                                     // Images
-            return 30 + image0.frame.height
+            var rows: CGFloat?
+            switch images.count {
+            case 0:
+                rows = 0
+            case 1...3:
+                rows = 1
+            case 4...6:
+                rows = 2
+            case 7...9:
+                rows = 3
+            default:
+                break
+            }
+            var imageViewsHeight = 30 + imageViewHeight * rows!
+            println(imageViewHeight)
+            return imageViewsHeight
         default:
             return 44
         }
@@ -334,7 +368,7 @@ class FavorDetailTable: UITableViewController
     // Modify cell height and background color
     //----------------------------------------------------------------------------------------------------------
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         var cell                        = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         cell.backgroundColor            = Constants.Color.Background

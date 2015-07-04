@@ -26,4 +26,6 @@
 //Chat
 #import "ChatView.h"
 
+#import "JTSImageViewController.h"
+
 #endif

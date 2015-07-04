@@ -44,64 +44,65 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     //----------------------------------------------------------------------------------------------------------
     // Navigation Bar
     //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var navBarItemLeft                   : UIBarButtonItem!
-    @IBOutlet weak var navBarItemRight                  : UIBarButtonItem!
+    @IBOutlet weak var navBarItemLeft                       : UIBarButtonItem!
+    @IBOutlet weak var navBarItemRight                      : UIBarButtonItem!
     //----------------------------------------------------------------------------------------------------------
     // Map
     //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var mapView                          : MKMapView!
-    @IBOutlet weak var foldUpButton                     : UIButton!
-    @IBOutlet weak var foldUpFunctionButton             : UIButton!
-    @IBOutlet weak var centerOnUserButton               : UIButton!
+    @IBOutlet weak var mapView                              : MKMapView!
+    @IBOutlet weak var foldUpButton                         : UIButton!
+    @IBOutlet weak var foldUpFunctionButton                 : UIButton!
+    @IBOutlet weak var centerOnUserButton                   : UIButton!
     //----------------------------------------------------------------------------------------------------------
     // Table
     //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var detailView                       : UIView!
-    @IBOutlet weak var foldDownButton                   : UIButton!
-    @IBOutlet weak var foldDownFunctionButton           : UIButton!
+    @IBOutlet weak var detailView                           : UIView!
+    @IBOutlet weak var foldDownButton                       : UIButton!
+    @IBOutlet weak var foldDownFunctionButton               : UIButton!
     //----------------------------------------------------------------------------------------------------------
     // Portrait
     //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var portraitView                     : UIView!
-    @IBOutlet weak var portraitImageView                : UIImageView!
+    @IBOutlet weak var portraitView                         : UIView!
+    @IBOutlet weak var portraitImageView                    : UIImageView!
     
     //----------------------------------------------------------------------------------------------------------
     // Constraints
     //----------------------------------------------------------------------------------------------------------
-    @IBOutlet weak var mapViewHeightConstraint          : NSLayoutConstraint!
-    @IBOutlet weak var mapViewBottomConstraint          : NSLayoutConstraint!
-    @IBOutlet weak var foldUpBottomConstraint           : NSLayoutConstraint!
-    @IBOutlet weak var foldUpBottomNewConstraint        : NSLayoutConstraint!
-    @IBOutlet weak var centerOnUserBottomConstraint     : NSLayoutConstraint!
-    @IBOutlet weak var centerOnUserBottomNewConstraint  : NSLayoutConstraint!
-    @IBOutlet weak var portraitViewTopConstraint        : NSLayoutConstraint!
-    @IBOutlet weak var portraitViewNewTopConstraint     : NSLayoutConstraint!
-    @IBOutlet weak var portraitViewCenterConstraint     : NSLayoutConstraint!
-    @IBOutlet weak var portraitViewOffConstraint        : NSLayoutConstraint!
+    @IBOutlet weak var mapViewHeightConstraint              : NSLayoutConstraint!
+    @IBOutlet weak var mapViewBottomConstraint              : NSLayoutConstraint!
+    @IBOutlet weak var tableTopToMapConstraint              : NSLayoutConstraint!
+    @IBOutlet weak var tableTopToLayoutConstraint           : NSLayoutConstraint!
+    @IBOutlet weak var foldUpBottomConstraint               : NSLayoutConstraint!
+    @IBOutlet weak var foldUpBottomNewConstraint            : NSLayoutConstraint!
+    @IBOutlet weak var centerOnUserBottomConstraint         : NSLayoutConstraint!
+    @IBOutlet weak var centerOnUserBottomNewConstraint      : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewTopConstraint            : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewNewTopConstraint         : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewCenterConstraint         : NSLayoutConstraint!
+    @IBOutlet weak var portraitViewOffConstraint            : NSLayoutConstraint!
     //----------------------------------------------------------------------------------------------------------
     
     
     // MARK: - Variables
     //----------------------------------------------------------------------------------------------------------
-    private var timer                                   : NSTimer?
-    private var interested                              = false
-    
-    private var manager                                 : CLLocationManager!
-    private var isCenteredOnUserLocation                = false
-    private var annotations                             = [CustomPointAnnotation]()
-    private var tableView                               : FavorDetailTable?
+    private var timer                                       : NSTimer?
+    private var interested                                  = false
+    private var manager                                     : CLLocationManager!
+    private var isCenteredOnUserLocation                    = false
+    private var annotations                                 = [CustomPointAnnotation]()
+    private var tableView                                   : FavorDetailTable?
     //----------------------------------------------------------------------------------------------------------
-    private var displayerMode                           : Int = 1   // 0: all map; 1: Splitted; 2: all table
-    private var mapViewOriginalFrame                    : CGRect?
-    private var detailViewOriginalFrame                 : CGRect?
-    private var foldUpButtonOriginalFrame               : CGRect?
-    private var foldDownButtonOriginalFrame             : CGRect?
-    private var centerOnUserButtonOriginalFrame         : CGRect?
-    private var portraitViewOriginalFrame               : CGRect?
+    private var displayerMode                               : Int = 1   // 0: all map; 1: Splitted; 2: all table
+    private var mapViewOriginalFrame                        : CGRect?
+    private var detailViewOriginalFrame                     : CGRect?
+    private var foldUpButtonOriginalFrame                   : CGRect?
+    private var foldDownButtonOriginalFrame                 : CGRect?
+    private var centerOnUserButtonOriginalFrame             : CGRect?
+    private var portraitViewOriginalFrame                   : CGRect?
     //----------------------------------------------------------------------------------------------------------
-    private var isAnimatingDisplay                      = false
-    private var isAnimatingBreathing                    = false
-    private var didLayoutSubviews                       = false
+    private var isAnimatingDisplay                          = true
+    private var isAnimatingBreathing                        = false
+    private var didLayoutSubviews                           = false
     //----------------------------------------------------------------------------------------------------------
     
     // MARK: - Initialization
@@ -112,6 +113,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadScene", name: "loadFavors", object: nil)
         loadFavors()
+        configLooks()
         
     }
     
@@ -121,22 +123,24 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     {
         super.viewWillAppear(true)
         
-        configLooks()
         if !isAnimatingBreathing {
             timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "buttonBreathEffect", userInfo: nil, repeats: true)
         }
         
-        if didLayoutSubviews {
-            displayerMode                               = 0
-        }
         
-        self.mapViewHeightConstraint.active             = false
-        self.mapViewBottomConstraint.active             = true
-        self.foldUpBottomConstraint.active              = false
-        self.foldUpBottomNewConstraint.active           = true
-        self.centerOnUserBottomConstraint.active        = false
-        self.centerOnUserBottomNewConstraint.active     = true
-        portraitView.alpha                              = 0
+        /* No effects
+        if didLayoutSubviews {
+        displayerMode                                   = 0
+        }
+        self.mapViewHeightConstraint.active                 = false
+        self.mapViewBottomConstraint.active                 = true
+        self.foldUpBottomConstraint.active                  = false
+        self.foldUpBottomNewConstraint.active               = true
+        self.centerOnUserBottomConstraint.active            = false
+        self.centerOnUserBottomNewConstraint.active         = true
+        portraitView.alpha                                  = 0
+        */
+        
     }
     
     //----------------------------------------------------------------------------------------------------------
@@ -145,14 +149,26 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     {
         configShapes()
         if !didLayoutSubviews {
+            //--------------------------------------------------------------------------------------------------
+            // Setup Defaults
+            //--------------------------------------------------------------------------------------------------
             self.mapViewOriginalFrame                       = self.mapView.frame
             self.foldUpButtonOriginalFrame                  = self.foldUpButton.frame
             self.centerOnUserButtonOriginalFrame            = self.centerOnUserButton.frame
             self.detailViewOriginalFrame                    = self.detailView.frame
             self.foldDownButtonOriginalFrame                = self.foldDownButton.frame
             self.portraitViewOriginalFrame                  = self.portraitView.frame
+            isAnimatingDisplay                              = false
+            //--------------------------------------------------------------------------------------------------
+            
+            /* No effects
+            self.detailView.frame                           = self.detailViewOriginalFrame!
+            self.foldDownButton.frame                       = self.foldDownButtonOriginalFrame!
+            self.foldDownFunctionButton.frame               = self.foldDownButtonOriginalFrame!
+            */
+
             changeDisplayMode(0)
-            didLayoutSubviews = true
+            didLayoutSubviews                               = true
         }
         
     }
@@ -259,7 +275,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
                 tableView!.bindData(favors[index] as! PFObject)
                 centerMapOnFavor()
             case UISwipeGestureRecognizerDirection.Up:
-                displayerMode == 2 ? print() : changeDisplayMode(2)
+                if displayerMode != 2 { changeDisplayMode(2) }
             case UISwipeGestureRecognizerDirection.Down:
                 displayerMode == 2 ? changeDisplayMode(1) : changeDisplayMode(0)
             default:
@@ -339,23 +355,23 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func searchTapped(sender:UIButton)
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         performSegueWithIdentifier("FavorView_To_FavorListTable", sender: self)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configLooks()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         view.backgroundColor                                        = Constants.Color.Background
         portraitView.backgroundColor                                = UIColor.clearColor()
-        detailView.addTopBorderWithHeight(3, color: Constants.Color.Border)
+        //detailView.addTopBorderWithHeight(3, color: Constants.Color.Border)
     }
     
     //----------------------------------------------------------------------------------------------------------
     func configShapes()
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         portraitImageView.layer.borderColor                         = Constants.Color.Border.CGColor
         portraitImageView.layer.borderWidth                         = 3
@@ -364,7 +380,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     
     //----------------------------------------------------------------------------------------------------------
     func changeDisplayMode(mode: Int)
-        //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     {
         if isAnimatingDisplay { return }
         
@@ -404,6 +420,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
                     (finished: Bool) -> Void in
                     self.displayerMode                              = 1
                     self.isAnimatingDisplay                         = false
+                    //println("New display mode is  \(self.displayerMode)")
                     self.tableView?.setTopMargin1()
                     self.tableView?.scrollToTop()
             })
@@ -439,38 +456,52 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
             }
             if mode == 2 {
                 UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                    
+                    self.tableTopToMapConstraint.active             = false
                     self.detailView.alpha                           = 1
+                    self.detailView.frame                           = CGRectMake(0, naviBarHeight!, self.view.frame.width, self.view.frame.height - naviBarHeight!)
+                    self.tableTopToLayoutConstraint.active          = true
+                    
+                    self.portraitViewTopConstraint.active           = false
+                    self.portraitView.layer.frame.origin.y          = self.view.layer.frame.origin.y + naviBarHeight! + 30
+                    self.portraitViewNewTopConstraint.active        = true
+                    
                     self.foldUpButton.hidden                        = true
                     self.foldUpFunctionButton.hidden                = true
                     self.foldDownButton.hidden                      = true
                     self.foldDownFunctionButton.hidden              = true
                     self.foldDownButton.layer.frame.origin.y        = self.view.frame.origin.y + naviBarHeight! + 30
                     self.foldDownFunctionButton.layer.frame.origin.y = self.view.frame.origin.y + naviBarHeight! + 30
-                    //                    self.portraitViewTopConstraint.active           = false
-                    self.portraitView.layer.frame.origin.y          = self.view.layer.frame.origin.y + naviBarHeight! + 30
-                    self.detailView.frame                           = CGRectMake(0, naviBarHeight!, self.view.frame.width, self.view.frame.height - naviBarHeight!)
-                    //                    self.portraitViewNewTopConstraint.active        = true
+                    
+                    
                     }, completion: {
                         (finished: Bool) -> Void in
                         self.displayerMode                          = 2
                         self.isAnimatingDisplay                     = false
                         self.tableView?.setTopMargin2()
-                        self.tableView?.scrollToTop()
                 })
             }
         case 2:
             self.isAnimatingDisplay                                 = true
             UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.portraitView.frame                             = self.portraitViewOriginalFrame!
-                self.portraitView.frame.origin.x                    = self.view.frame.origin.x
                 
-                self.detailView.frame                               = self.detailViewOriginalFrame!
-                self.foldDownButton.frame                           = self.foldDownButtonOriginalFrame!
-                self.foldDownFunctionButton.frame                   = self.foldDownButtonOriginalFrame!
-                self.foldUpButton.hidden                            = true
-                self.foldUpFunctionButton.hidden                    = true
                 self.foldDownButton.hidden                          = true
                 self.foldDownFunctionButton.hidden                  = true
+                self.foldUpButton.hidden                            = true
+                self.foldUpFunctionButton.hidden                    = true
+                
+                self.portraitViewNewTopConstraint.active           = false
+                self.portraitView.frame                             = self.portraitViewOriginalFrame!
+                self.portraitView.frame.origin.x                    = self.view.frame.origin.x
+                self.portraitViewTopConstraint.active        = true
+                
+                self.tableTopToLayoutConstraint.active              = false
+                self.detailView.frame                               = self.detailViewOriginalFrame!
+                self.tableTopToMapConstraint.active                 = true
+                
+                self.foldDownButton.frame                           = self.foldDownButtonOriginalFrame!
+                self.foldDownFunctionButton.frame                   = self.foldDownButtonOriginalFrame!
+                
                 self.tableView?.setTopMargin1()
                 }, completion: {
                     (finished: Bool) -> Void in
