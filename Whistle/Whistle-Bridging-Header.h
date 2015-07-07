@@ -28,4 +28,6 @@
 
 #import "JTSImageViewController.h"
 
+#import "FSVoiceBubble.h"
+
 #endif

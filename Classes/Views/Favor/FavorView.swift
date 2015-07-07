@@ -64,7 +64,9 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
     //----------------------------------------------------------------------------------------------------------
     @IBOutlet weak var portraitView                         : UIView!
     @IBOutlet weak var portraitImageView                    : UIImageView!
-    
+    @IBOutlet weak var nameLabel                            : UILabel!
+    @IBOutlet weak var bannerView                           : UIView!
+    @IBOutlet weak var audioView                            : FSVoiceBubble!
     //----------------------------------------------------------------------------------------------------------
     // Constraints
     //----------------------------------------------------------------------------------------------------------
@@ -114,6 +116,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadScene", name: "loadFavors", object: nil)
         loadFavors()
         configLooks()
+        audioView.contentURL = NSBundle.mainBundle().URLForResource("Let It Go", withExtension: "mp3")
         
     }
     
@@ -376,6 +379,17 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
         portraitImageView.layer.borderColor                         = Constants.Color.Border.CGColor
         portraitImageView.layer.borderWidth                         = 3
         portraitImageView.layer.cornerRadius                        = portraitImageView.frame.height/2
+        portraitImageView.alpha                                     = 1
+        nameLabel.textColor                                         = Constants.Color.TextLight
+        nameLabel.shadowOffset                                      = CGSizeMake(0, -1)
+        nameLabel.layer.cornerRadius                                = 8
+        bannerView.backgroundColor                                  = Constants.Color.ContentBackground
+        bannerView.alpha                                            = 0.85
+        audioView.durationInsideBubble                              = true
+        audioView.bubbleImage                                       = UIImage(named: "fs_cap_bg")
+        audioView.waveColor                                         = Constants.Color.Background
+        audioView.animatingWaveColor                                = UIColor.grayColor()
+        audioView.alpha                                             = 0.85
     }
     
     //----------------------------------------------------------------------------------------------------------
@@ -415,7 +429,7 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
                 self.foldUpButton.hidden                            = true
                 self.foldUpFunctionButton.hidden                    = true
                 
-                
+                self.bannerView.hidden                              = false
                 }, completion: {
                     (finished: Bool) -> Void in
                     self.displayerMode                              = 1
@@ -448,6 +462,8 @@ class FavorView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate,
                     self.foldUpFunctionButton.hidden                = false
                     self.foldDownButton.hidden                      = true
                     self.foldDownFunctionButton.hidden              = true
+                    
+                    self.bannerView.hidden                          = true
                     }, completion: {
                         (finished: Bool) -> Void in
                         self.displayerMode = 0

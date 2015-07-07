@@ -22,7 +22,7 @@ class FavorListTable: UITableViewController
     //----------------------------------------------------------------------------------------------------------
     {
         super.viewDidLoad()
-        
+        tableView.backgroundColor = Constants.Color.TableBackground
     }
 
     // MARK: - Delegates
@@ -37,8 +37,6 @@ class FavorListTable: UITableViewController
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     //----------------------------------------------------------------------------------------------------------
     {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return 3
     }
 
@@ -47,7 +45,7 @@ class FavorListTable: UITableViewController
     //----------------------------------------------------------------------------------------------------------
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("FavorListCell", forIndexPath: indexPath) as! FavorListCell
-
+        
         return cell
     }
 
@@ -55,7 +53,7 @@ class FavorListTable: UITableViewController
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     //----------------------------------------------------------------------------------------------------------
     {
-        return 60
+        return 150
     }
 
 }

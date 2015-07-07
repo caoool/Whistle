@@ -72,11 +72,13 @@ struct Constants {
         //--------------------------------------------------------------------------------------------------
         // Global
         //--------------------------------------------------------------------------------------------------
-        static let Main                         : UIColor = UIColor(red:0.17, green:0.19, blue:0.25, alpha:1)
+        static let Main                         : UIColor = UIColor(red:0.34, green:0.36, blue:0.44, alpha:1)
         static let Background                   : UIColor = UIColor(red:0.21, green:0.25, blue:0.31, alpha:1)
+        static let ContentBackground            : UIColor = UIColor(red:0.34, green:0.39, blue:0.44, alpha:1)
         static let Shadow                       : UIColor = UIColor.darkGrayColor()
-        static let TextLight                    : UIColor = UIColor(red:0.96, green:0.92, blue:0.84, alpha:1)
-        static let Border                       : UIColor = UIColor(red:0.96, green:0.92, blue:0.84, alpha:1)
+        static let TextLight                    : UIColor = UIColor(red:0.97, green:0.96, blue:0.9, alpha:1)
+        static let PlaceHolder                  : UIColor = UIColor.lightGrayColor()
+        static let Border                       : UIColor = Constants.Color.TextLight
         //--------------------------------------------------------------------------------------------------
         // Navigation Bar
         //--------------------------------------------------------------------------------------------------
@@ -89,6 +91,7 @@ struct Constants {
         static let CellBackground               : UIColor = Constants.Color.Background
         static let CellText                     : UIColor = Constants.Color.TextLight
         static let CellTextShadow               : UIColor = Constants.Color.Shadow
+        static let CellPlaceHolder              : UIColor = Constants.Color.PlaceHolder
         //--------------------------------------------------------------------------------------------------
         
         static let Test                         : UIColor = UIColor.brownColor()
@@ -102,6 +105,18 @@ struct Constants {
         static let CellBackgroundColor          : UIColor = UIColorFromHex(0xFFFFFF, alpha: 1)
     }
     //------------------------------------------------------------------------------------------------------
+    
+    //------------------------------------------------------------------------------------------------------
+    struct PlaceHolder {
+        static let NewFavor                     : String = "Please enter your favor..."
+        static let NewReward                    : String = "Please enter your reward..."
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    struct Limit {
+        static let Favor                        : Int = 300
+        static let Reward                       : Int = 300
+    }
     
     //------------------------------------------------------------------------------------------------------
     struct Radius {

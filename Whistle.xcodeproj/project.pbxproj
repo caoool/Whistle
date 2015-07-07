@@ -27,6 +27,15 @@
 		89B0A5441B48590200B0226B /* JTSSimpleImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B0A53C1B48590200B0226B /* JTSSimpleImageDownloader.m */; };
 		89B0A5451B48590200B0226B /* UIApplication+JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B0A53E1B48590200B0226B /* UIApplication+JTSImageViewController.m */; };
 		89B0A5461B48590200B0226B /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B0A5401B48590200B0226B /* UIImage+JTSImageEffects.m */; };
+		89B290011B497AC1002741DE /* RDLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B290001B497AC1002741DE /* RDLabel.swift */; };
+		89B2900A1B498C6A002741DE /* Let It Go.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89B290091B498C6A002741DE /* Let It Go.mp3 */; };
+		89B290101B498ECB002741DE /* FSVoiceBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2900D1B498ECB002741DE /* FSVoiceBubble.m */; };
+		89B290111B498ECB002741DE /* UIImage+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2900F1B498ECB002741DE /* UIImage+FSExtension.m */; };
+		89B290171B499275002741DE /* fs_chat_bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B290131B499275002741DE /* fs_chat_bubble@2x.png */; };
+		89B290181B499275002741DE /* fs_icon_wave_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B290141B499275002741DE /* fs_icon_wave_0@2x.png */; };
+		89B290191B499275002741DE /* fs_icon_wave_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B290151B499275002741DE /* fs_icon_wave_1@2x.png */; };
+		89B2901A1B499275002741DE /* fs_icon_wave_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89B290161B499275002741DE /* fs_icon_wave_2@2x.png */; };
+		89B2901E1B4B1AAF002741DE /* RDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B2901D1B4B1AAF002741DE /* RDTextField.swift */; };
 		942FA2CB1B2F0FED0050C3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942FA2CA1B2F0FED0050C3E3 /* AppDelegate.swift */; };
 		942FA2D21B2F0FED0050C3E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942FA2D11B2F0FED0050C3E3 /* Images.xcassets */; };
 		942FA2D51B2F0FED0050C3E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942FA2D31B2F0FED0050C3E3 /* LaunchScreen.xib */; };
@@ -301,6 +310,17 @@
 		89B0A53E1B48590200B0226B /* UIApplication+JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JTSImageViewController.m"; sourceTree = "<group>"; };
 		89B0A53F1B48590200B0226B /* UIImage+JTSImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JTSImageEffects.h"; sourceTree = "<group>"; };
 		89B0A5401B48590200B0226B /* UIImage+JTSImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JTSImageEffects.m"; sourceTree = "<group>"; };
+		89B290001B497AC1002741DE /* RDLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDLabel.swift; sourceTree = "<group>"; };
+		89B290091B498C6A002741DE /* Let It Go.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Let It Go.mp3"; sourceTree = "<group>"; };
+		89B2900C1B498ECB002741DE /* FSVoiceBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVoiceBubble.h; sourceTree = "<group>"; };
+		89B2900D1B498ECB002741DE /* FSVoiceBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVoiceBubble.m; sourceTree = "<group>"; };
+		89B2900E1B498ECB002741DE /* UIImage+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FSExtension.h"; sourceTree = "<group>"; };
+		89B2900F1B498ECB002741DE /* UIImage+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FSExtension.m"; sourceTree = "<group>"; };
+		89B290131B499275002741DE /* fs_chat_bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fs_chat_bubble@2x.png"; sourceTree = "<group>"; };
+		89B290141B499275002741DE /* fs_icon_wave_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fs_icon_wave_0@2x.png"; sourceTree = "<group>"; };
+		89B290151B499275002741DE /* fs_icon_wave_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fs_icon_wave_1@2x.png"; sourceTree = "<group>"; };
+		89B290161B499275002741DE /* fs_icon_wave_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fs_icon_wave_2@2x.png"; sourceTree = "<group>"; };
+		89B2901D1B4B1AAF002741DE /* RDTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDTextField.swift; sourceTree = "<group>"; };
 		942FA2C51B2F0FED0050C3E3 /* Whistle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whistle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		942FA2C91B2F0FED0050C3E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		942FA2CA1B2F0FED0050C3E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -861,6 +881,38 @@
 			path = JTSImageViewController;
 			sourceTree = "<group>";
 		};
+		89B28FFF1B497AAB002741DE /* Customize */ = {
+			isa = PBXGroup;
+			children = (
+				89B290001B497AC1002741DE /* RDLabel.swift */,
+				89B2901D1B4B1AAF002741DE /* RDTextField.swift */,
+			);
+			path = Customize;
+			sourceTree = "<group>";
+		};
+		89B2900B1B498ECB002741DE /* FSVoiceBubble */ = {
+			isa = PBXGroup;
+			children = (
+				89B290121B499275002741DE /* Resourses */,
+				89B2900C1B498ECB002741DE /* FSVoiceBubble.h */,
+				89B2900D1B498ECB002741DE /* FSVoiceBubble.m */,
+				89B2900E1B498ECB002741DE /* UIImage+FSExtension.h */,
+				89B2900F1B498ECB002741DE /* UIImage+FSExtension.m */,
+			);
+			path = FSVoiceBubble;
+			sourceTree = "<group>";
+		};
+		89B290121B499275002741DE /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				89B290131B499275002741DE /* fs_chat_bubble@2x.png */,
+				89B290141B499275002741DE /* fs_icon_wave_0@2x.png */,
+				89B290151B499275002741DE /* fs_icon_wave_1@2x.png */,
+				89B290161B499275002741DE /* fs_icon_wave_2@2x.png */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		942FA2BC1B2F0FED0050C3E3 = {
 			isa = PBXGroup;
 			children = (
@@ -887,6 +939,7 @@
 			isa = PBXGroup;
 			children = (
 				94DED7E71B3EF54F002B9F3B /* test audio.mp3 */,
+				89B290091B498C6A002741DE /* Let It Go.mp3 */,
 				94884AA71B41D18000EB7E5B /* data.plist */,
 				942FA4CA1B2F11E00050C3E3 /* Main.storyboard */,
 				942FA4ED1B2F15150050C3E3 /* Whistle-Bridging-Header.h */,
@@ -937,6 +990,7 @@
 		942FA2EF1B2F10E90050C3E3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				89B28FFF1B497AAB002741DE /* Customize */,
 				94884AB31B41D67600EB7E5B /* Media */,
 				942FA2F01B2F10E90050C3E3 /* Audio */,
 				942FA2F51B2F10E90050C3E3 /* Backend */,
@@ -1085,6 +1139,7 @@
 		942FA33E1B2F10E90050C3E3 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				89B2900B1B498ECB002741DE /* FSVoiceBubble */,
 				89B0A5341B48590200B0226B /* JTSImageViewController */,
 				946FD5411B3F258E00472E91 /* PulsingHalo */,
 				94DED7DC1B3EF296002B9F3B /* SYWaveformPlayer */,
@@ -1802,10 +1857,12 @@
 				942FA44F1B2F10E90050C3E3 /* privacy.html in Resources */,
 				94DED7CD1B3EF144002B9F3B /* Images.xcassets in Resources */,
 				94884AA81B41D18000EB7E5B /* data.plist in Resources */,
+				89B290191B499275002741DE /* fs_icon_wave_1@2x.png in Resources */,
 				942FA4F81B2F1B0E0050C3E3 /* image5.jpg in Resources */,
 				942FA4C11B2F10E90050C3E3 /* Info.plist in Resources */,
 				942FA2D51B2F0FED0050C3E3 /* LaunchScreen.xib in Resources */,
 				94DED7E41B3EF296002B9F3B /* playbutton.png in Resources */,
+				89B290171B499275002741DE /* fs_chat_bubble@2x.png in Resources */,
 				942FA4F91B2F1B0E0050C3E3 /* image6.jpg in Resources */,
 				948E8FB01B3C3A4C002556D0 /* Info-OSX.plist in Resources */,
 				942FA4C21B2F10E90050C3E3 /* back@2x.png in Resources */,
@@ -1818,8 +1875,10 @@
 				942FA4961B2F10E90050C3E3 /* JSQMessagesToolbarContentView.xib in Resources */,
 				942FA4F71B2F1B0E0050C3E3 /* image4.jpg in Resources */,
 				942FA4F41B2F1B0E0050C3E3 /* image1.jpg in Resources */,
+				89B290181B499275002741DE /* fs_icon_wave_0@2x.png in Resources */,
 				942FA4F51B2F1B0E0050C3E3 /* image2.jpg in Resources */,
 				942FA4AA1B2F10E90050C3E3 /* Info.plist in Resources */,
+				89B2901A1B499275002741DE /* fs_icon_wave_2@2x.png in Resources */,
 				942FA4491B2F10E90050C3E3 /* chat_pictures@2x.png in Resources */,
 				942FA4461B2F10E90050C3E3 /* chat_blank@2x.png in Resources */,
 				942FA4CB1B2F11E00050C3E3 /* Main.storyboard in Resources */,
@@ -1830,6 +1889,7 @@
 				942FA4931B2F10E90050C3E3 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				942FA2D21B2F0FED0050C3E3 /* Images.xcassets in Resources */,
 				942FA4501B2F10E90050C3E3 /* terms.html in Resources */,
+				89B2900A1B498C6A002741DE /* Let It Go.mp3 in Resources */,
 				94DED7E81B3EF54F002B9F3B /* test audio.mp3 in Resources */,
 				942FA44E1B2F10E90050C3E3 /* stickers_blank@2x.png in Resources */,
 				942FA4451B2F10E90050C3E3 /* chat_audio@2x.png in Resources */,
@@ -1854,6 +1914,7 @@
 			files = (
 				942FA4B11B2F10E90050C3E3 /* FormCheckCell.swift in Sources */,
 				94884AA61B41CE3400EB7E5B /* RecentCell.swift in Sources */,
+				89B290101B498ECB002741DE /* FSVoiceBubble.m in Sources */,
 				942FA4621B2F10E90050C3E3 /* UIAlertView+AFNetworking.m in Sources */,
 				942FA4AC1B2F10E90050C3E3 /* SiriWaveformView.swift in Sources */,
 				94DED7CB1B3EF144002B9F3B /* ImagePreviewFlowLayout.swift in Sources */,
@@ -1922,6 +1983,7 @@
 				942FA46A1B2F10E90050C3E3 /* IDMTapDetectingImageView.m in Sources */,
 				942FA46F1B2F10E90050C3E3 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				942FA4B61B2F10E90050C3E3 /* FormSliderCell.swift in Sources */,
+				89B290011B497AC1002741DE /* RDLabel.swift in Sources */,
 				942FA4651B2F10E90050C3E3 /* UIProgressView+AFNetworking.m in Sources */,
 				942FA46B1B2F10E90050C3E3 /* IDMTapDetectingView.m in Sources */,
 				89B0A5411B48590200B0226B /* JTSAnimatedGIFUtility.m in Sources */,
@@ -1956,6 +2018,7 @@
 				942FA4BC1B2F10E90050C3E3 /* FormSelector.swift in Sources */,
 				948E8FB91B3DD8EC002556D0 /* LLARingSpinnerView.m in Sources */,
 				948E8FB31B3D21BC002556D0 /* HttpService.swift in Sources */,
+				89B290111B498ECB002741DE /* UIImage+FSExtension.m in Sources */,
 				948E8FBD1B3DDCE9002556D0 /* VMGearLoadingView.m in Sources */,
 				942FA4C41B2F10E90050C3E3 /* MapViewController.swift in Sources */,
 				942FA4741B2F10E90050C3E3 /* UIImage+JSQMessages.m in Sources */,
@@ -2013,6 +2076,7 @@
 				942FA41F1B2F10E90050C3E3 /* AudioManager.swift in Sources */,
 				942FA4AF1B2F10E90050C3E3 /* FormValueCell.swift in Sources */,
 				942FA4751B2F10E90050C3E3 /* UIView+JSQMessages.m in Sources */,
+				89B2901E1B4B1AAF002741DE /* RDTextField.swift in Sources */,
 				942FA4A01B2F10E90050C3E3 /* ProgressHUD.m in Sources */,
 				942FA4661B2F10E90050C3E3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				942FA4631B2F10E90050C3E3 /* UIButton+AFNetworking.m in Sources */,

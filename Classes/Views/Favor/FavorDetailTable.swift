@@ -84,7 +84,7 @@ class FavorDetailTable: UITableViewController
     //----------------------------------------------------------------------------------------------------------
     var images                                                      = [UIImage]()
     var imageViews                                                  = [UIImageView]()
-    var imageViewHeight                                             : CGFloat = 85
+    var imageViewHeight                                             : CGFloat = 100
     //----------------------------------------------------------------------------------------------------------
     
     
@@ -231,11 +231,24 @@ class FavorDetailTable: UITableViewController
             element.layer.borderColor                               = Constants.Color.Border.CGColor
             element.layer.borderWidth                               = 2
             element.layer.cornerRadius                              = element.layer.frame.height/2
+            element.backgroundColor                                 = Constants.Color.Border
+            let origImage                                           = element.image
+            let tintedImage                                         = origImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            element.image                                           = tintedImage
+            element.tintColor                                       =  Constants.Color.Background
         }
         
         var lineList = [priceLine, rewardLine, favorLine, addressLine, imagesLine]
         for element in lineList {
             element.backgroundColor                                 = Constants.Color.Border
+        }
+        
+        var labelList = [rewardLabel, favorLabel, addressLabel]
+        for element in labelList {
+            element.layer.borderColor                               = Constants.Color.ContentBackground.CGColor
+            element.layer.borderWidth                               = 2
+            element.layer.cornerRadius                              = 12
+            element.layer.backgroundColor                           = Constants.Color.ContentBackground.CGColor
         }
         
         reshapeAudioView()
@@ -316,6 +329,9 @@ class FavorDetailTable: UITableViewController
     {
         imageViews = [image0, image1, image2, image3, image4, image5, image6, image7, image8]
         for (index, element) in enumerate(imageViews) {
+            element.layer.borderColor                               = Constants.Color.ContentBackground.CGColor
+            element.layer.borderWidth                               = 1
+            element.layer.cornerRadius                              = 8
             if index <= images.count-1 {
                 element.image = images[index]
             } else {
@@ -337,11 +353,11 @@ class FavorDetailTable: UITableViewController
         case 0:                                                     // Price
             return 85
         case 1:                                                     // Reward
-            return calculateHeightForString(rewardLabel.text!) + 100
+            return calculateHeightForString(rewardLabel.text!) + 85
         case 2:                                                     // Favor
-            return calculateHeightForString(favorLabel.text!) + 100
+            return calculateHeightForString(favorLabel.text!) + 85
         case 3:                                                     // Address
-            return calculateHeightForString(addressLabel.text!) + 100
+            return calculateHeightForString(addressLabel.text!) + 85
         case 4:                                                     // Images
             var rows: CGFloat?
             switch images.count {
@@ -357,7 +373,6 @@ class FavorDetailTable: UITableViewController
                 break
             }
             var imageViewsHeight = 30 + imageViewHeight * rows!
-            println(imageViewHeight)
             return imageViewsHeight
         default:
             return 44
