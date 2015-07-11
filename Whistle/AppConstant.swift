@@ -90,6 +90,7 @@ struct Constants {
         static let TableBackground              : UIColor = Constants.Color.Background
         static let CellBackground               : UIColor = Constants.Color.Background
         static let CellText                     : UIColor = Constants.Color.TextLight
+        static let CellTextReverse              : UIColor = Constants.Color.Background
         static let CellTextShadow               : UIColor = Constants.Color.Shadow
         static let CellPlaceHolder              : UIColor = Constants.Color.PlaceHolder
         //--------------------------------------------------------------------------------------------------

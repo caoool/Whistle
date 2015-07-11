@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		893DDA151B51614600659436 /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893DDA141B51614600659436 /* ProfileSettingTable.swift */; };
 		89594C1F1B3ACCFE00A8CF8B /* YALSpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C031B3ACCFE00A8CF8B /* YALSpringAnimation.m */; };
 		89594C201B3ACCFE00A8CF8B /* CAAnimation+YALTabBarViewAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C081B3ACCFE00A8CF8B /* CAAnimation+YALTabBarViewAnimations.m */; };
 		89594C211B3ACCFE00A8CF8B /* CATransaction+TransactionWithAnimationsAndCompletion.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C0C1B3ACCFE00A8CF8B /* CATransaction+TransactionWithAnimationsAndCompletion.m */; };
@@ -14,7 +15,7 @@
 		89594C231B3ACCFE00A8CF8B /* YALFoldingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C131B3ACCFE00A8CF8B /* YALFoldingTabBarController.m */; };
 		89594C241B3ACCFE00A8CF8B /* YALTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C171B3ACCFE00A8CF8B /* YALTabBarItem.m */; };
 		89594C251B3ACCFE00A8CF8B /* YALFoldingTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594C1E1B3ACCFE00A8CF8B /* YALFoldingTabBar.m */; };
-		89755A001B402F6200D31E2F /* ProfileSettingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897559FF1B402F6200D31E2F /* ProfileSettingTable.swift */; };
+		89755A001B402F6200D31E2F /* ProfileEditTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897559FF1B402F6200D31E2F /* ProfileEditTable.swift */; };
 		89755A021B407F0A00D31E2F /* ProfileChangeStatusTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89755A011B407F0A00D31E2F /* ProfileChangeStatusTable.swift */; };
 		89755A081B4087C400D31E2F /* ProfileRegionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89755A071B4087C400D31E2F /* ProfileRegionPickerView.swift */; };
 		898B1A0B1B3F2F0600DD852F /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B1A071B3F2F0600DD852F /* InitialView.swift */; };
@@ -276,6 +277,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		893DDA141B51614600659436 /* ProfileSettingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
 		89594C021B3ACCFE00A8CF8B /* YALSpringAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALSpringAnimation.h; sourceTree = "<group>"; };
 		89594C031B3ACCFE00A8CF8B /* YALSpringAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALSpringAnimation.m; sourceTree = "<group>"; };
 		89594C071B3ACCFE00A8CF8B /* CAAnimation+YALTabBarViewAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+YALTabBarViewAnimations.h"; sourceTree = "<group>"; };
@@ -291,7 +293,7 @@
 		89594C1A1B3ACCFE00A8CF8B /* YALTabBarInteracting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALTabBarInteracting.h; sourceTree = "<group>"; };
 		89594C1D1B3ACCFE00A8CF8B /* YALFoldingTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALFoldingTabBar.h; sourceTree = "<group>"; };
 		89594C1E1B3ACCFE00A8CF8B /* YALFoldingTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALFoldingTabBar.m; sourceTree = "<group>"; };
-		897559FF1B402F6200D31E2F /* ProfileSettingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingTable.swift; sourceTree = "<group>"; };
+		897559FF1B402F6200D31E2F /* ProfileEditTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditTable.swift; sourceTree = "<group>"; };
 		89755A011B407F0A00D31E2F /* ProfileChangeStatusTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileChangeStatusTable.swift; sourceTree = "<group>"; };
 		89755A071B4087C400D31E2F /* ProfileRegionPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRegionPickerView.swift; sourceTree = "<group>"; };
 		898B1A071B3F2F0600DD852F /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -1630,9 +1632,10 @@
 				946FD54B1B3F25A200472E91 /* ProfileView.swift */,
 				946FD54A1B3F25A200472E91 /* ProfileFavorsTable.swift */,
 				946FD5491B3F25A200472E91 /* ProfileFavorCell.swift */,
-				897559FF1B402F6200D31E2F /* ProfileSettingTable.swift */,
+				897559FF1B402F6200D31E2F /* ProfileEditTable.swift */,
 				89755A011B407F0A00D31E2F /* ProfileChangeStatusTable.swift */,
 				89755A071B4087C400D31E2F /* ProfileRegionPickerView.swift */,
+				893DDA141B51614600659436 /* ProfileSettingTable.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2004,7 +2007,7 @@
 				942FA4A31B2F10E90050C3E3 /* SimpleAlert.swift in Sources */,
 				89594C1F1B3ACCFE00A8CF8B /* YALSpringAnimation.m in Sources */,
 				942FA4711B2F10E90050C3E3 /* NSString+JSQMessages.m in Sources */,
-				89755A001B402F6200D31E2F /* ProfileSettingTable.swift in Sources */,
+				89755A001B402F6200D31E2F /* ProfileEditTable.swift in Sources */,
 				942FA45D1B2F10E90050C3E3 /* AFURLRequestSerialization.m in Sources */,
 				94884AC21B41D67600EB7E5B /* converter.m in Sources */,
 				94884A9F1B41C9D400EB7E5B /* TabBarController.swift in Sources */,
@@ -2059,6 +2062,7 @@
 				9478BFA11B45110300F3D91D /* FavorView.swift in Sources */,
 				9478BF9E1B45110300F3D91D /* FavorListCell.swift in Sources */,
 				946FD54D1B3F25A200472E91 /* ProfileFavorsTable.swift in Sources */,
+				893DDA151B51614600659436 /* ProfileSettingTable.swift in Sources */,
 				942FA4201B2F10E90050C3E3 /* AudioPlayer.swift in Sources */,
 				9478BF8A1B440AB800F3D91D /* CurrentFavorsTable.swift in Sources */,
 				942FA49C1B2F10E90050C3E3 /* LocationManager.swift in Sources */,

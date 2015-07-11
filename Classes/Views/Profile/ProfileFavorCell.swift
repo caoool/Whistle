@@ -6,68 +6,107 @@
 //  Copyright (c) 2015 LoopCow. All rights reserved.
 //
 
+//----------------------------------------------------------------------------------------------------------
 import UIKit
 import Parse
+//----------------------------------------------------------------------------------------------------------
 
-class ProfileFavorCell: UITableViewCell {
+
+//----------------------------------------------------------------------------------------------------------
+class ProfileFavorCell: UITableViewCell
+//----------------------------------------------------------------------------------------------------------
+{
+    // MARK: - IBOutlets
+    //----------------------------------------------------------------------------------------------------------
+    @IBOutlet weak var line                                 : UIView!
+    @IBOutlet weak var dotBottom                            : UIView!
+    @IBOutlet weak var portrait                             : UIImageView!
+    @IBOutlet weak var dateLabel                            : UILabel!
+    @IBOutlet weak var nameWhistledLabel                    : UILabel!
+    @IBOutlet weak var nameAssistedLabel                    : UILabel!
+    //----------------------------------------------------------------------------------------------------------
+    // Constraints
+    //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var portrait1: UIImageView!
-    @IBOutlet weak var portrait2: UIImageView!
-    @IBOutlet weak var detailLabel: UILabel!
     
-    @IBOutlet weak var leftMoreCons: NSLayoutConstraint!
-    @IBOutlet weak var leftLessCons: NSLayoutConstraint!
-    @IBOutlet weak var rightMoreCons: NSLayoutConstraint!
-    @IBOutlet weak var rightLessCons: NSLayoutConstraint!
-    
-    override func awakeFromNib() {
+    // MARK: - Initializations
+    //----------------------------------------------------------------------------------------------------------
+    override func awakeFromNib()
+    //----------------------------------------------------------------------------------------------------------
+    {
         super.awakeFromNib()
-        // Initialization code
+        configLooks()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+    //----------------------------------------------------------------------------------------------------------
+    override func prepareForReuse()
+    //----------------------------------------------------------------------------------------------------------
+    {
+        dateLabel.text = ""
+        nameWhistledLabel.text = ""
+        nameAssistedLabel.text = ""
+        dotBottom.hidden = true
+        portrait.hidden = false
+        line.hidden = false
     }
     
-    func bindData(favor: PFObject, previousFavor: PFObject?) {
+    
+    // MARK: - Functions
+    //----------------------------------------------------------------------------------------------------------
+    func configLooks()
+    //----------------------------------------------------------------------------------------------------------
+    {
+        backgroundColor                                     = Constants.Color.CellBackground
         
+        line.backgroundColor                                = Constants.Color.Border
+        dotBottom.backgroundColor                           = Constants.Color.Border
+        dotBottom.layer.cornerRadius                        = 7.5
+        
+        portrait.layer.borderColor                          = Constants.Color.Border.CGColor
+        portrait.layer.borderWidth                          = 2
+        portrait.layer.cornerRadius                         = 30
+        portrait.backgroundColor                            = Constants.Color.Border
+        
+        dateLabel.textColor                                 = Constants.Color.CellTextReverse
+        dateLabel.backgroundColor                           = Constants.Color.CellText
+        dateLabel.layer.cornerRadius                        = 7.5
+        nameWhistledLabel.textColor                         = Constants.Color.CellText
+        nameAssistedLabel.textColor                         = Constants.Color.CellText
+    }
+    
+    //----------------------------------------------------------------------------------------------------------
+    func bindData(favor: PFObject, previousFavor: PFObject?)
+    //----------------------------------------------------------------------------------------------------------
+    {
         var user = PFUser.currentUser()!
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd"
-        self.dateLabel.text = formatter.stringFromDate(favor.updatedAt!)
+        self.dateLabel.text = "  \(formatter.stringFromDate(favor.updatedAt!))  "
         if previousFavor != nil {
-            if self.dateLabel.text == formatter.stringFromDate(previousFavor!.updatedAt!) {
-                self.dateLabel.hidden = true
+            if self.dateLabel.text == "  \(formatter.stringFromDate(previousFavor!.updatedAt!))  " {
+                self.dateLabel.text = ""
             }
         }
-        
         if (favor[Constants.Favor.CreatedBy] as! PFUser) == user {
-            self.portrait2.hidden = true
-            self.leftLessCons.active = true
-            self.leftMoreCons.active = false
             var file = user[Constants.User.Portrait] as! PFFile
             file.getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if error == nil {
-                    self.portrait1.image = UIImage(data: data!)!
+                    self.portrait.image = UIImage(data: data!)!
+                    self.nameAssistedLabel.text = favor[Constants.Favor.Content] as? String
+//                    self.nameWhistledLabel.text = 
                 }
             })
         } else {
-            self.portrait1.hidden = true
-            self.leftLessCons.active = false
-            self.leftMoreCons.active = true
             var file = user[Constants.User.Portrait] as! PFFile
             file.getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if error == nil {
-                    self.portrait2.image = UIImage(data: data!)!
+                    self.portrait.image = UIImage(data: data!)!
+                    self.nameWhistledLabel.text = favor[Constants.Favor.Content] as? String
                 }
             })
         }
-        self.detailLabel.text = favor[Constants.Favor.Content] as? String
-
     }
     
 }

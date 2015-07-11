@@ -31,7 +31,7 @@ class TabBarController : YALFoldingTabBarController {
             rightItemImage: nil)
         self.rightBarItems = [item3, item4]
         self.centerButtonImage = UIImage(named: "plus_icon")
-        self.selectedIndex = 1
+        self.selectedIndex = 3  
         
         //customize tabBarView
         self.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight

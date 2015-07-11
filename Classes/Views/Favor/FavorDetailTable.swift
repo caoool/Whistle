@@ -195,7 +195,7 @@ class FavorDetailTable: UITableViewController
     func configLooks()
     //----------------------------------------------------------------------------------------------------------
     {
-        tableView.backgroundColor                                   = Constants.Color.Background
+        tableView.backgroundColor                                   = Constants.Color.TableBackground
         
         var shadowOffset                                            = CGSizeMake(0, -1)
         var labelList                                               = [dollarLabel, priceLabel, rewardLabel, favorLabel, addressLabel]

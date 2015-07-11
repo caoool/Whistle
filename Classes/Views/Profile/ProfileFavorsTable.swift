@@ -6,28 +6,50 @@
 //  Copyright (c) 2015 LoopCow. All rights reserved.
 //
 
-//-------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------
 import UIKit
 import Parse
-//-------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------
 
-class ProfileFavorsTable: UITableViewController {
+
+
+//----------------------------------------------------------------------------------------------------------
+class ProfileFavorsTable: UITableViewController
+//----------------------------------------------------------------------------------------------------------
+{
+    // MARK: - Variables
+    //----------------------------------------------------------------------------------------------------------
+    var favors : NSMutableArray                                 = NSMutableArray()
+    //----------------------------------------------------------------------------------------------------------
     
-    var favors : NSMutableArray = NSMutableArray()
     
-    override func viewDidLoad() {
+    // MARK: - Initializations
+    //----------------------------------------------------------------------------------------------------------
+    override func viewDidLoad()
+    //----------------------------------------------------------------------------------------------------------
+    {
         super.viewDidLoad()
+        configLooks()
+        
         loadFavors()
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "loadFavors", forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - Functions
+    //----------------------------------------------------------------------------------------------------------
+    func configLooks()
+    //----------------------------------------------------------------------------------------------------------
+    {
+        tableView.backgroundColor                               = Constants.Color.TableBackground
+        tableView.contentInset                                  = UIEdgeInsetsMake(80, 0, YALTabBarViewDefaultHeight + 30, 0)
     }
     
-    func loadFavors(){
+    //----------------------------------------------------------------------------------------------------------
+    func loadFavors()
+    //----------------------------------------------------------------------------------------------------------
+    {
         let favorQuery : PFQuery = PFQuery(className: Constants.Favor.Name)
         favorQuery.whereKey(Constants.Favor.CreatedBy, equalTo: PFUser.currentUser()!)
         
@@ -50,27 +72,86 @@ class ProfileFavorsTable: UITableViewController {
         }
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    // MARK: - Delegates
+    //----------------------------------------------------------------------------------------------------------
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    //----------------------------------------------------------------------------------------------------------
+    {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favors.count
+    //----------------------------------------------------------------------------------------------------------
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    //----------------------------------------------------------------------------------------------------------
+    {
+        return favors.count+2
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    //----------------------------------------------------------------------------------------------------------
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    //----------------------------------------------------------------------------------------------------------
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProfileFavorCell", forIndexPath: indexPath) as! ProfileFavorCell
         
-        let favor = favors[indexPath.row] as! PFObject
-        if indexPath.row > 0 {
-            let previousFavor = favors[indexPath.row - 1] as! PFObject
-            cell.bindData(favor, previousFavor:  previousFavor)
-        } else {
-            cell.bindData(favor, previousFavor: nil)
+        if indexPath.row == 0 {
+            cell.dotBottom.hidden = false
+            cell.portrait.hidden = true
+            cell.line.hidden = true
         }
         
+        if indexPath.row == favors.count + 1 {
+            cell.dotBottom.hidden = false
+            cell.portrait.hidden = true
+            cell.line.hidden = true
+        }
+        
+        if indexPath.row > 0 && indexPath.row < favors.count + 1{
+            let favor = favors[indexPath.row-1] as! PFObject
+            if indexPath.row > 1 {
+                let prevFavor = favors[indexPath.row-2] as! PFObject
+                cell.bindData(favor, previousFavor: prevFavor)
+            } else if indexPath.row != favors.count+1 {
+                cell.bindData(favor, previousFavor: nil)
+            }
+        }
+        
+        
+//        if indexPath.row > 1 {
+//            let prevFavor = favors[indexPath.row-1] as! PFObject
+//            cell.bindData(favor, previousFavor: prevFavor)
+//        } else if indexPath != 0 {
+//            
+//        }
+
         return cell
     }
+    
+    //----------------------------------------------------------------------------------------------------------
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    //----------------------------------------------------------------------------------------------------------
+    {
+        if indexPath.row == 0 {
+            return 23
+        } else if indexPath.row == favors.count + 1 {
+            return 30
+        } else {
+            return 100
+        }
+        
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println(indexPath.row)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
 }
+
+
+
+
+
+
+
+
+
