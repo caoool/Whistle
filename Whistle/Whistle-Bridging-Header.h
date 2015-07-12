@@ -10,7 +10,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
-#import "UICountingLabel.h"
 #import "LLARingSpinnerView.h"
 #import "VMGearLoadingView.h"
 #import "SYWaveformPlayerView.h"

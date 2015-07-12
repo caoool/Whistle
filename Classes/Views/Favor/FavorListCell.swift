@@ -23,8 +23,6 @@ class FavorListCell: UITableViewCell
     @IBOutlet weak var nameLabel                            : UILabel!
     @IBOutlet weak var contentContainerView                 : UIView!
     @IBOutlet weak var audioView                            : FSVoiceBubble!
-    @IBOutlet weak var distanceIcon                         : UIImageView!
-    @IBOutlet weak var priceIcon                            : UIImageView!
     @IBOutlet weak var distanceLabel                        : UILabel!
     @IBOutlet weak var priceLabel                           : UILabel!
     //----------------------------------------------------------------------------------------------------------
@@ -62,24 +60,6 @@ class FavorListCell: UITableViewCell
         audioView.bubbleImage                               = UIImage(named: "fs_cap_bg")
         audioView.waveColor                                 = Constants.Color.Background
         audioView.animatingWaveColor                        = UIColor.grayColor()
-        
-        distanceIcon.layer.borderColor                      = Constants.Color.Border.CGColor
-        distanceIcon.layer.borderWidth                      = 2
-        distanceIcon.layer.cornerRadius                     = 25/2
-        distanceIcon.backgroundColor                        = Constants.Color.Border
-        let origImage1                                      = distanceIcon.image
-        let tintedImage1                                    = origImage1!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        distanceIcon.image                                  = tintedImage1
-        distanceIcon.tintColor                              =  Constants.Color.Background
-        
-        priceIcon.layer.borderColor                         = Constants.Color.Border.CGColor
-        priceIcon.layer.borderWidth                         = 2
-        priceIcon.layer.cornerRadius                        = 25/2
-        priceIcon.backgroundColor                           = Constants.Color.Border
-        let origImage2                                      = priceIcon.image
-        let tintedImage2                                    = origImage2!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        priceIcon.image                                     = tintedImage2
-        priceIcon.tintColor                                 = Constants.Color.Background
         
         priceLabel.textColor                                = Constants.Color.TextLight
         distanceLabel.textColor                             = Constants.Color.TextLight

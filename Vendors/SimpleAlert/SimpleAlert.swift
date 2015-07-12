@@ -158,14 +158,6 @@ public class SimpleAlert {
             self.preferredStyle = style
         }
         
-        public convenience init(view: UIView?, style: Style, title: String?, message: String?) {
-            self.init()
-            self.title = title
-            self.message = message
-            self.customView = view
-            self.preferredStyle = style
-        }
-        
         public required init(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
         }
