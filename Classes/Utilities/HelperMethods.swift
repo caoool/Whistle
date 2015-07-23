@@ -182,6 +182,24 @@ extension UIView {
     }
 }
 
+func roundedWithWhiteBorder(myView: UIView, width: CGFloat) {
+    myView.layer.borderWidth = width
+    myView.layer.masksToBounds = true
+    myView.layer.borderColor = UIColorFromHex(0xFFFFFF, alpha: 1).CGColor
+    myView.layer.cornerRadius = myView.frame.height/2
+    myView.clipsToBounds = true
+}
+
+func calculateHeightForString(inString:String) -> CGFloat
+{
+    var messageString = inString
+    var attributes = [UIFont(): UIFont.systemFontOfSize(15.0)]
+    var attrString:NSAttributedString? = NSAttributedString(string: messageString, attributes: attributes)
+    var rect:CGRect = attrString!.boundingRectWithSize(CGSizeMake(300.0,CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, context:nil )//hear u will get nearer height not the exact value
+    var requredSize:CGRect = rect
+    return requredSize.height  //to include button's in your tableview
+    
+}
 
 
 

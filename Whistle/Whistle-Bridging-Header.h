@@ -7,11 +7,26 @@
 #ifndef Whistle_Bridging_Header_h
 #define Whistle_Bridging_Header_h
 
-// If you are using Facebook, uncomment this line to get automatic import of the header inside your project.
-// #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
-#import "UICountingLabel.h"
-//#import "LNBRippleEffect.h"
+#import "LLARingSpinnerView.h"
+#import "VMGearLoadingView.h"
+#import "SYWaveformPlayerView.h"
+#import "PulsingHaloLayer.h"
+#import "MultiplePulsingHaloLayer.h"
 
+//Tab Bar
+#import "YALTabBarItem.h"
+#import "YALFoldingTabBarController.h"
+#import "YALAnimatingTabBarConstants.h"
+#import "YALTabBarInteracting.h"
+
+//Chat
+#import "ChatView.h"
+
+#import "JTSImageViewController.h"
+
+#import "FSVoiceBubble.h"
 
 #endif
