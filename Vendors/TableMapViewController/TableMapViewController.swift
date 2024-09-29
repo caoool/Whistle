@@ -208,6 +208,4 @@ class TableMapViewController: UIViewController {
         parentController.presentViewController(mapViewController, animated: true, completion: nil)
     }
     
-    
-    
 }

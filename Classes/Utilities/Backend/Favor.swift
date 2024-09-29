@@ -65,7 +65,7 @@ class FavorBackend {
             favor[Constants.Favor.Location] = location
         }
         
-        favor[Constants.Favor.User] = PFUser.currentUser()
+        favor[Constants.Favor.CreatedBy] = PFUser.currentUser()
         favor[Constants.Favor.Tag] = tags
         
         favor.saveInBackgroundWithBlock {
@@ -125,7 +125,7 @@ class FavorBackend {
                 favor.image1 = object[Constants.Favor.Image + "1"] as? PFFile
                 favor.audio = object[Constants.Favor.Audio] as? PFFile
                 favor.location = object[Constants.Favor.Location] as? PFGeoPoint
-                favor.user = object[Constants.Favor.User] as? PFUser
+                favor.user = object[Constants.Favor.CreatedBy] as? PFUser
                 favors.append(favor)
             }
         }

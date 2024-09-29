@@ -28,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set Status Style
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        // set Navigation bar style
+        UINavigationBar.appearance().barTintColor = Constants.Color.NavigationBar
+        UINavigationBar.appearance().tintColor = Constants.Color.NavigationBarTint
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : Constants.Color.NavigationBarTint]
+        
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
@@ -45,7 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
         // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
         // Uncomment the line inside ParseStartProject-Bridging-Header and the following line here:
-        // PFFacebookUtils.initializeFacebook()
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        PFTwitterUtils.initializeWithConsumerKey("cQAFPzeIRWcCtBED3Lt7Yemhu",
+            consumerSecret:"2ILmbqrY6VmU3IacjqFERGoKZt7DGXiZepQhHLeC0bQemhjxuv")
         // ****************************************************************************
         
         PFUser.enableAutomaticUser()
@@ -72,17 +80,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-        } else {
-            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
-            application.registerForRemoteNotificationTypes(types)
-        }
+        //setupTabBar()
+        //        if application.respondsToSelector("registerUserNotificationSettings:") {
+        //            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        //            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        //            application.registerUserNotificationSettings(settings)
+        //            application.registerForRemoteNotifications()
+        //        } else {
+        //            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
+        //            application.registerForRemoteNotificationTypes(types)
+        //        }
         
         return true
+    }
+    
+    func setupTabBar() {
+        
+        let tabBarController : YALFoldingTabBarController = self.window?.rootViewController as! YALFoldingTabBarController
+        let item1 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "nearby_icon"),
+            leftItemImage: nil,
+            rightItemImage: nil)
+        let item2 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "profile_icon"),
+            leftItemImage: UIImage(named: "edit_icon"),
+            rightItemImage: nil)
+        tabBarController.leftBarItems = [item1, item2]
+        let item3 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "chats_icon"),
+            leftItemImage: UIImage(named: "search_icon"),
+            rightItemImage: UIImage(named: "new_chat_icon"))
+        let item4 : YALTabBarItem = YALTabBarItem(itemImage: UIImage(named: "settings_icon"),
+            leftItemImage: nil,
+            rightItemImage: nil)
+        tabBarController.rightBarItems = [item3, item4]
+        tabBarController.centerButtonImage = UIImage(named: "plus_icon")
+        tabBarController.selectedIndex = 2
+        
+        //customize tabBarView
+        tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight
+        tabBarController.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset
+        tabBarController.tabBarView.backgroundColor = UIColor(red: 94.0/255.0, green: 91.0/255.0, blue: 149.0/255.0, alpha: 0)
+        tabBarController.tabBarView.tabBarColor = UIColor(red: 72.0/255.0, green: 211.0/255.0, blue: 178.0/255.0, alpha: 1)
+        tabBarController.tabBarViewHeight = YALTabBarViewDefaultHeight
+        tabBarController.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets
+        tabBarController.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets
     }
     
     //--------------------------------------
@@ -131,10 +170,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Facebook SDK Integration
     //--------------------------------------
     
-    ///////////////////////////////////////////////////////////
-    // Uncomment this method if you are using Facebook
-    ///////////////////////////////////////////////////////////
-    // func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-    //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
-    // }
-}
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application,
+            openURL: url,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        FBSDKAppEvents.activateApp()
+    }}
